@@ -1,0 +1,6 @@
+C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.dll
+C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.pdb
+C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.csproj.AssemblyReference.cache
+C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.csproj.CoreCompileInputs.cache
+C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.dll
+C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.pdb
