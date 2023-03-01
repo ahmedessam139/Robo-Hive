@@ -4,3 +4,9 @@ C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Mo
 C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.csproj.CoreCompileInputs.cache
 C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.dll
 C:\Users\elnag\Desktop\University\Graduation\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.pdb
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.pdb
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.csproj.AssemblyReference.cache
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.csproj.CoreCompileInputs.cache
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\obj\Debug\IO-Modules.pdb

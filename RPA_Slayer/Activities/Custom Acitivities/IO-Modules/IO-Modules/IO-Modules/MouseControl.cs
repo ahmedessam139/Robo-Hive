@@ -27,6 +27,9 @@ namespace IO_Modules
         [Category("Input")]
         public bool RightClick { get; set; }
 
+        [Category("Input")]
+        public bool DoubleClick { get; set; }
+
         protected override void Execute(CodeActivityContext context)
         {
             // Get input arguments for X and Y coordinates
@@ -36,24 +39,36 @@ namespace IO_Modules
             // Move the mouse cursor to the specified coordinates
             Cursor.Position = new System.Drawing.Point(x, y);
 
-            // Check if left or right click should be performed
+            // Check if left, right, or double click should be performed
             if (LeftClick)
             {
                 // Perform a left mouse click
-                DoMouseClick(MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP);
+                DoMouseClick(MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP, DoubleClick);
             }
             else if (RightClick)
             {
                 // Perform a right mouse click
-                DoMouseClick(MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP);
+                DoMouseClick(MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP, DoubleClick);
             }
         }
 
         // Simulate a mouse click
-        private void DoMouseClick(int downFlag, int upFlag)
+        private void DoMouseClick(int downFlag, int upFlag, bool doubleClick)
         {
-            mouse_event(downFlag, 0, 0, 0, 0);
-            mouse_event(upFlag, 0, 0, 0, 0);
+            if (doubleClick)
+            {
+                // Perform a double-click by sending two sets of mouse down/up events
+                mouse_event(downFlag, 0, 0, 0, 0);
+                mouse_event(upFlag, 0, 0, 0, 0);
+                mouse_event(downFlag, 0, 0, 0, 0);
+                mouse_event(upFlag, 0, 0, 0, 0);
+            }
+            else
+            {
+                // Perform a single-click
+                mouse_event(downFlag, 0, 0, 0, 0);
+                mouse_event(upFlag, 0, 0, 0, 0);
+            }
         }
 
         // Import the mouse_event function from user32.dll

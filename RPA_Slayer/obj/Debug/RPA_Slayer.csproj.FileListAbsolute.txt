@@ -80,3 +80,5 @@ E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.CoreCompileInputs.cache
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.CopyComplete
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\Debug\RPA_Slayer.pdb
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\IO-Modules.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\IO-Modules.pdb
