@@ -14,10 +14,10 @@ using System.Windows.Shapes;
 
 namespace Processes_Control
 {
-    // Interaction logic for close_app_designer.xaml
-    public partial class close_app_designer
+    // Interaction logic for close_app_desginer.xaml
+    public partial class close_app_desginer
     {
-        public close_app_designer()
+        public close_app_desginer()
         {
             InitializeComponent();
         }

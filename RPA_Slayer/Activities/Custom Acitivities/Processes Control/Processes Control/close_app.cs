@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Activities;
 
 namespace Processes_Control
 {
-
     public sealed class close_app : CodeActivity
     {
         // Define an activity input argument of type string
