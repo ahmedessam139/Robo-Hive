@@ -42,12 +42,18 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="close_app.cs" />
+    <Compile Include="close_app_desginer.xaml.cs">
+      <DependentUpon>close_app_desginer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="open_app.cs" />
     <Compile Include="open_app_designer.xaml.cs">
       <DependentUpon>open_app_designer.xaml</DependentUpon>
@@ -77,6 +83,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="close_app_desginer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="open_app_designer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
