@@ -9,3 +9,17 @@ E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Acti
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.pdb
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.dll
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.pdb
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.pdb
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.csproj.AssemblyReference.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\close_app_desginer.baml
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\open_app_designer.baml
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\close_app_desginer.g.cs
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\open_app_designer.g.cs
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control_MarkupCompile.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.g.resources
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes_Control.Properties.Resources.resources
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.csproj.GenerateResource.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.csproj.CoreCompileInputs.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.dll
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.pdb

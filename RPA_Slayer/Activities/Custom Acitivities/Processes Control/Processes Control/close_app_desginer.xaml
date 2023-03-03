@@ -4,6 +4,20 @@
     xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
     xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="173*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Label for the text box -->
+        <TextBlock Text="Process ID:" VerticalAlignment="Center"/>
+
+        <!-- Text box for the process ID input -->
+        <TextBox Grid.Column="1" VerticalAlignment="Center">
+            <TextBox.Text>
+                <Binding Path="ModelItem.ProcessId.Expression" Mode="TwoWay"/>
+            </TextBox.Text>
+        </TextBox>
+
     </Grid>
 </sap:ActivityDesigner>

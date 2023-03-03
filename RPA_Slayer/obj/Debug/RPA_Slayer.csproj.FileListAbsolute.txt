@@ -84,3 +84,26 @@ E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\IO-Modules.pdb
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Processes Control.dll
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Processes Control.pdb
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\RPA_Slayer.exe.config
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\RPA_Slayer.exe
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\RPA_Slayer.pdb
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\IO-Modules.dll
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\Processes Control.dll
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\Processes Control.pdb
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.AssemblyReference.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.SuggestedBindingRedirects.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\MainWindow.g.cs
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\wfDesigner.g.cs
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\App.g.cs
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer_MarkupCompile.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer_MarkupCompile.lref
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\MainWindow.baml
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\wfDesigner.baml
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.g.resources
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.Properties.Resources.resources
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.GenerateResource.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.CoreCompileInputs.cache
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.CopyComplete
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.exe
+C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.pdb
