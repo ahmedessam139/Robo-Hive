@@ -24,7 +24,7 @@ namespace Processes_Control
                 // Get the process by its ID
                 Process process = Process.GetProcessById(processId);
 
-                // Close the process's main window
+                // Close the process's main windowj
                 process.CloseMainWindow();
 
                 // Wait for the process to exit
