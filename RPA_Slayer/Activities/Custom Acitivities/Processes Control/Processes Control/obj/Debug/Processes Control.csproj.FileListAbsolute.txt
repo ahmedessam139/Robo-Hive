@@ -1,0 +1,11 @@
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.csprojResolveAssemblyReference.cache
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control_MarkupCompile.cache
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.g.resources
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes_Control.Properties.Resources.resources
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.csproj.GenerateResource.Cache
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\open_app_designer.baml
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\open_app_designer.g.cs
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.pdb
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\Activities\Custom Acitivities\Processes Control\Processes Control\obj\Debug\Processes Control.pdb
