@@ -154,25 +154,24 @@ namespace RPA_Slayer
             }
         }
 
-        //private void sendToOrc_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        //import the class from the Helpers folder
+        private void sendToOrc_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //import the class from the Helpers folder
 
-        //        //acces methode from orchestratorConfig.cs file 
-        //        orchestratorConfig orc = new orchestratorConfig();
-        //        orc.ShowForm();
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
+                orchestratorConfig orc = new orchestratorConfig();
+                orc.ShowForm();
 
 
+            }
+            catch (Exception ex)    
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
-        //}
+
+
+        }
     }
 }
