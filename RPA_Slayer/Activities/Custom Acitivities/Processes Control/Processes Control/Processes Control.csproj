@@ -54,6 +54,8 @@
     <Compile Include="close_app_desginer.xaml.cs">
       <DependentUpon>close_app_desginer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="focus_on.cs" />
+    <Compile Include="minimize.cs" />
     <Compile Include="open_app.cs" />
     <Compile Include="open_app_designer.xaml.cs">
       <DependentUpon>open_app_designer.xaml</DependentUpon>

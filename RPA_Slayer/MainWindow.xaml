@@ -13,7 +13,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ToolBar Height="80" VerticalAlignment="Center">
+        <ToolBar Height="80" VerticalAlignment="Center" Margin="0,0,-530,0">
             <GroupBox Header="File Management">
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SaveExportButton" Content="Save/Export" Height="35" Width="100" Background="#FFA9BFD9" Click="btnSaveWorkflow_Click" />
@@ -39,6 +39,13 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Content="UNDO" Height="35" Width="60" />
                     <Button Content="REDO" Height="35" Width="60" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Orchestrator" Width="215">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="sendToOrc" Content="Send to Orc" Height="35" Width="100" Background="#FF73D979" Click="sendToOrc_Click"  />
+                    <Button x:Name="connect" Content="Connect to Orc" Height="35" Width="100" Background="#FF73D979"  />
+
                 </StackPanel>
             </GroupBox>
         </ToolBar>

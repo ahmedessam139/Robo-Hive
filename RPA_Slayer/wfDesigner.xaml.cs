@@ -38,10 +38,10 @@ namespace RPA_Slayer
 
         public WorkflowDesigner WorkflowDesigner;
         public IDesignerDebugView DebuggerService;
-        
+
         const String DefultWorkflowFilePath = @"DefaultWorkflows\defaultWorkflow.xaml";
         public string WorkflowFilePath = DefultWorkflowFilePath;
-        
+
         TextBox logsTxtbox;
 
         Dictionary<int, SourceLocation> textLineToSourceLocationMap;
@@ -77,7 +77,7 @@ namespace RPA_Slayer
                 this.WorkflowDesigner.Load(WorkflowFilePath);
 
             }
-            
+
 
 
             this.workflowDesignerPanel.Content = this.WorkflowDesigner.View;
@@ -157,7 +157,7 @@ namespace RPA_Slayer
             }
             //fixed ForEach
 
-        
+
             //fixid activites
 
 
@@ -224,9 +224,9 @@ namespace RPA_Slayer
 
         private void TabItem_GotFocus_RefreshXamlBox(object sender, RoutedEventArgs e)
         {
-            
-                this.WorkflowDesigner.Flush(); //save the current state of the workflow to the Test() property
-                xamlTextBox.Text = this.WorkflowDesigner.Text;
+
+            this.WorkflowDesigner.Flush(); //save the current state of the workflow to the Test() property
+            xamlTextBox.Text = this.WorkflowDesigner.Text;
 
         }
         #region New-Open-save - Run - Stop - Debug - Clear
@@ -293,10 +293,29 @@ namespace RPA_Slayer
                 {
                     SaveWorkflow();
                     var workflow = ActivityXamlServices.Load(WorkflowFilePath);
-                    var wa = new WorkflowApplication(workflow);
-                    wa.Run();
 
+                    // Create a SimulatorTrackingParticipant and register it with the workflow application
+                    var trackingParticipant = new SimulatorTrackingParticipant
+                    {
+                        ActivityIdToWorkflowElementMap = new Dictionary<string, Activity>()
+                    };
 
+                    WorkflowApplication application = new WorkflowApplication(workflow);
+                    application.Extensions.Add(trackingParticipant);
+
+                    // Register a callback for the TrackingRecordReceived event to print activity logs
+                    trackingParticipant.TrackingRecordReceived += (sender, e) =>
+                    {
+                        var record = e.Record as ActivityStateRecord;
+
+                        if (record != null && record.Activity != null)
+                        {
+                            Console.WriteLine($"Activity {record.Activity.Name} ({record.Activity.Id}) is in state {record.State}");
+                        }
+                    };
+
+                    // Run the workflow application
+                    application.Run();
                 }
                 catch (Exception ex)
                 {
@@ -304,6 +323,7 @@ namespace RPA_Slayer
                 }
             }
         }
+
 
 
 
@@ -390,7 +410,7 @@ namespace RPA_Slayer
                         logsTxtbox.AppendText("Level: " + ((ActivityStateRecord)trackingEventArgs.Record).Level + "\n");
                         logsTxtbox.AppendText("Time: " + ((ActivityStateRecord)trackingEventArgs.Record).EventTime + "\n");
                         logsTxtbox.AppendText("************************\n");
-                        
+
 
                         //Add a sleep so that the debug adornments are visible to the user
                         System.Threading.Thread.Sleep(500);
@@ -595,7 +615,7 @@ namespace RPA_Slayer
                     breakpointList.Remove(srcLoc);
                 }
             }
-            
+
 
         }
 
@@ -618,7 +638,7 @@ namespace RPA_Slayer
         }
 
 
-       
+
 
         #endregion
 

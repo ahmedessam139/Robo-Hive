@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Activities;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -15,11 +19,22 @@ using System.Windows.Shapes;
 namespace Processes_Control
 {
     // Interaction logic for close_app_desginer.xaml
-    public partial class close_app_desginer
+    public partial class close_app_desginer 
     {
+
         public close_app_desginer()
         {
             InitializeComponent();
+            
+
+            
+        }
+        
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
+            
         }
     }
 }

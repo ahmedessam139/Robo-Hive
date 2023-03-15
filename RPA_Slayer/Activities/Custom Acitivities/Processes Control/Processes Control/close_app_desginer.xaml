@@ -1,8 +1,11 @@
 ﻿<sap:ActivityDesigner x:Class="Processes_Control.close_app_desginer"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
     xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
-    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation">
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:Converters="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13*"/>
@@ -11,13 +14,12 @@
 
         <!-- Label for the text box -->
         <TextBlock Text="Process ID:" VerticalAlignment="Center"/>
-
         <!-- Text box for the process ID input -->
-        <TextBox Grid.Column="1" VerticalAlignment="Center">
-            <TextBox.Text>
-                <Binding Path="ModelItem.ProcessId.Expression" Mode="TwoWay"/>
-            </TextBox.Text>
-        </TextBox>
+        
+            <!-- Text box for the process ID input -->
+            <TextBox x:Name="processIdTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0"
+             Text="{Binding Path=ModelItem.ProcessId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
 
     </Grid>
 </sap:ActivityDesigner>

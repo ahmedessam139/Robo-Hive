@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPA_Slayer.Helpers;
 //Tmam
 
 namespace RPA_Slayer
@@ -151,6 +152,27 @@ namespace RPA_Slayer
             {
                 System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void sendToOrc_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //import the class from the Helpers folder
+
+                //acces methode from orchestratorConfig.cs file 
+                orchestratorConfig orc = new orchestratorConfig();
+                orc.ShowForm();
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
+
         }
     }
 }

@@ -81,9 +81,7 @@ E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.CopyComplete
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\Debug\RPA_Slayer.pdb
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\IO-Modules.dll
-E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\IO-Modules.pdb
 E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Processes Control.dll
-E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Processes Control.pdb
 C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\RPA_Slayer.exe.config
 C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\RPA_Slayer.exe
 C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\bin\Debug\RPA_Slayer.pdb
@@ -107,3 +105,15 @@ C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\
 C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.csproj.CopyComplete
 C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.exe
 C:\Users\elnag\Desktop\University\Graduation\Project From GitHub\RPA_Slayer\obj\Debug\RPA_Slayer.pdb
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Processes Control.pdb
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Newtonsoft.Json.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Text.Json.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Memory.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Text.Encodings.Web.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.ValueTuple.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Numerics.Vectors.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Buffers.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Gam3a\Projects\Graduation_Project\My_project\Project from Git\RPA_Slayer\obj\Debug\RPA_Slayer.exe.config

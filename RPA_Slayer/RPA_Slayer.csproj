@@ -40,6 +40,7 @@
     <Reference Include="IO-Modules">
       <HintPath>Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="Processes Control">
       <HintPath>Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll</HintPath>
     </Reference>
@@ -50,6 +51,8 @@
     <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\orchestratorConfig.cs" />
     <Compile Include="Helpers\SimulatorTrackingParticipant.cs" />
     <Compile Include="wfDesigner.xaml.cs">
       <DependentUpon>wfDesigner.xaml</DependentUpon>

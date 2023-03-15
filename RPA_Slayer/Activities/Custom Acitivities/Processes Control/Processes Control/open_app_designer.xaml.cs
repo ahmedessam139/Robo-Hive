@@ -23,6 +23,7 @@ namespace Processes_Control
             openFileDialog.Filter = "Application files (*.exe)|*.exe|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
+                
                 InArgument<string> appPath = new InArgument<string>(openFileDialog.FileName);
                 ModelItem.Properties["AppPath"].SetValue(appPath);
             }
