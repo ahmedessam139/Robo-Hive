@@ -41,7 +41,7 @@
                     <Button Content="REDO" Height="35" Width="60" />
                 </StackPanel>
             </GroupBox>
-           
+            
         </ToolBar>
 
         <Grid Grid.Row="1">
