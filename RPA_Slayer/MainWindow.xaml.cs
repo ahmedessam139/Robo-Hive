@@ -160,13 +160,12 @@ namespace RPA_Slayer
             {
                 //import the class from the Helpers folder
 
-                //acces methode from orchestratorConfig.cs file 
                 orchestratorConfig orc = new orchestratorConfig();
                 orc.ShowForm();
 
 
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }

@@ -41,7 +41,13 @@
                     <Button Content="REDO" Height="35" Width="60" />
                 </StackPanel>
             </GroupBox>
-            
+            <GroupBox Header="Orchestrator" Width="215">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="sendToOrc" Content="Send to Orc" Height="35" Width="100" Background="#FF73D979" Click="sendToOrc_Click"  />
+                    <Button x:Name="connect" Content="Connect to Orc" Height="35" Width="100" Background="#FF73D979"  />
+
+                </StackPanel>
+            </GroupBox>
         </ToolBar>
 
         <Grid Grid.Row="1">
