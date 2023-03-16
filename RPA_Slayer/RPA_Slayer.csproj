@@ -41,10 +41,14 @@
       <HintPath>Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\ref\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Processes Control">
       <HintPath>Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll</HintPath>
+    </Reference>
+    <Reference Include="Shortcuts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Activities\Custom Acitivities\Shortcuts\Shortcuts\bin\Debug\Shortcuts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
