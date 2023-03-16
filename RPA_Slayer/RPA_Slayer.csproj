@@ -40,7 +40,9 @@
     <Reference Include="IO-Modules">
       <HintPath>Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\ref\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Processes Control">
       <HintPath>Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll</HintPath>
     </Reference>
@@ -73,9 +75,16 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\orchestratorConfig.cs" />
     <Compile Include="Helpers\SimulatorTrackingParticipant.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wfDesigner.xaml.cs">
       <DependentUpon>wfDesigner.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
