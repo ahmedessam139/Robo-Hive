@@ -16,6 +16,10 @@
 # Mono auto generated files
 mono_crash.*
 
+#build files 
+bin/
+obj/
+
 # Build results
 
 # Visual Studio 2015/2017 cache/options directory

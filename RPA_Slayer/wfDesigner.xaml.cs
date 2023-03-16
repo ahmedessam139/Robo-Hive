@@ -39,7 +39,7 @@ namespace RPA_Slayer
         public WorkflowDesigner WorkflowDesigner;
         public IDesignerDebugView DebuggerService;
 
-        const String DefultWorkflowFilePath = @"DefaultWorkflows\defaultWorkflow.xaml";
+        const String DefultWorkflowFilePath = @"..\..\DefaultWorkflows\defaultWorkflow.xaml";
         public string WorkflowFilePath = DefultWorkflowFilePath;
 
         TextBox logsTxtbox;
