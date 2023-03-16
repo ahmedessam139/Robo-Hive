@@ -101,6 +101,7 @@ namespace RPA_Slayer
             //AppDomain.CurrentDomain.Load("System.Activities.Core.Presentation");
             AppDomain.CurrentDomain.Load("IO-Modules");
             AppDomain.CurrentDomain.Load("Processes Control");
+            AppDomain.CurrentDomain.Load("Shortcuts");
 
 
 
