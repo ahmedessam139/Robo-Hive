@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace RPA_Slayer.Helpers
 {
-    public class orchestratorConfig
+    public class orchestratorCommunications
     {
         public string packageName { get; set; }
         public string date { get; set; }
@@ -58,9 +58,10 @@ namespace RPA_Slayer.Helpers
 
 
 
-        public void ShowForm()
+        public void ShowForm(string WorkflowFilePath )
         {
             var form = new Form();
+            form.Icon = Properties.Resources.Logo_icon;
             form.Text = "Send To Orc";
             form.Width = 500;
             form.Height = 300;
@@ -114,7 +115,7 @@ namespace RPA_Slayer.Helpers
             xamlLabel.Left = 120;
             xamlLabel.Top = 110;
             xamlLabel.AutoSize = true;
-            xamlLabel.Text = "C:\\Users\\Essam's\\Desktop\\wf.xaml";
+            xamlLabel.Text = WorkflowFilePath;
             xamlPath = xamlLabel.Text;
             form.Controls.Add(xamlLabel);
 

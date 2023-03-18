@@ -77,18 +77,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\orchestratorConfig.cs" />
+    <Compile Include="Helpers\orchestratorCommunications.cs" />
     <Compile Include="Helpers\SimulatorTrackingParticipant.cs" />
-    <Compile Include="LoginWindow.xaml.cs">
+    <Compile Include="Pages\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="wfDesigner.xaml.cs">
       <DependentUpon>wfDesigner.xaml</DependentUpon>
     </Compile>
-    <Page Include="LoginWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,6 +97,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="wfDesigner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +139,16 @@
   <ItemGroup>
     <Folder Include="Activites\" />
     <Folder Include="DefultWorkflows\" />
+    <Folder Include="Resources\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Logo_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Logo_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
