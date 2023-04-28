@@ -28,7 +28,9 @@ namespace RPA_Slayer.Helpers
             machineName = "test";
             using (var httpClient = new HttpClient())
             {
-                var apiUrl = "http://localhost:8000/api/upload";
+                //var apiUrl = "http://localhost:8000/api/upload";
+                var apiUrl = "http://192.168.1.143:8000/api/packages/create";
+
 
                 var payload = new
                 {
