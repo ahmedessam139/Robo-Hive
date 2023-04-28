@@ -20,9 +20,6 @@ namespace Browser_Engine
         // Define an activity output argument of type string
         public OutArgument<string> BrowserId { get; set; }
 
-        // Define an activity output argument of type IWebDriver
-        public OutArgument<IWebDriver> Driver { get; set; }
-
         // Define a property to store the WebDriver object
         private IWebDriver driver;
 
@@ -39,15 +36,13 @@ namespace Browser_Engine
 
             // Navigate to the specified URL
             driver.Navigate().GoToUrl(url);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
 
             // Generate a unique identifier for the browser instance
             string browserId = Guid.NewGuid().ToString();
 
             // Output the browser identifier
             this.BrowserId.Set(context, browserId);
-
-            // Output the WebDriver instance
-            this.Driver.Set(context, driver);
         }
     }
 }
