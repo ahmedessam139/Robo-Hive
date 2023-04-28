@@ -14,14 +14,18 @@ namespace RPA_Slayer.Helpers
     public class orchestratorCommunications
     {
         public string packageName { get; set; }
+        public string machineName { get; set; }
         public string date { get; set; }
-
-        public bool repeat { get; set; }
-
+        public string time { get; set; }
         public string xamlPath { get; set; }
 
+
+        //set machinName to fixed value "test"
+        
+        
         public async Task sendToOrc()
         {
+            machineName = "test";
             using (var httpClient = new HttpClient())
             {
                 var apiUrl = "http://localhost:8000/api/upload";
@@ -29,9 +33,11 @@ namespace RPA_Slayer.Helpers
                 var payload = new
                 {
                     packageName = packageName,
+                    xamlFile = Convert.ToBase64String(File.ReadAllBytes(xamlPath)),
+                    //machineName = machineName,
                     date = date,
-                    xamlFile = Convert.ToString(File.ReadAllText(xamlPath)),
-                    repeat = repeat
+                    time = time,
+                    //xamlFile = Convert.ToString(File.ReadAllText(xamlPath)),
                 };
 
                 var jsonPayload = JsonConvert.SerializeObject(payload);
@@ -132,11 +138,7 @@ namespace RPA_Slayer.Helpers
                 }
             };
 
-            var repeatCheckBox = new CheckBox();
-            repeatCheckBox.Text = "Repeat";
-            repeatCheckBox.Left = 20;
-            repeatCheckBox.Top = 140;
-            form.Controls.Add(repeatCheckBox);
+            
 
             var sendButton = new Button();
             sendButton.Text = "Send";
@@ -154,13 +156,14 @@ namespace RPA_Slayer.Helpers
                     timePicker.Value.Hour,
                     timePicker.Value.Minute,
                     timePicker.Value.Second);
-                date = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
-                repeat = repeatCheckBox.Checked;
 
+                date = dateTime.ToString("yy-MM-dd");
+                time = dateTime.ToString("HH:mm:ss");
                 await sendToOrc();
-            };
+            };  
 
             form.ShowDialog();
+
         }
 
 
