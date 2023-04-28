@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RPA_Slayer"
         mc:Ignorable="d"
-        Title="RPA Slayer" Height="700" Width="900" WindowState="Maximized">
+        Title="RPA Slayer" Height="700" Width="900" WindowState="Maximized"
+         Icon="/Logo_icon.ico">
     <Grid x:Name="LayoutRoot">
 
         <Grid.RowDefinitions>

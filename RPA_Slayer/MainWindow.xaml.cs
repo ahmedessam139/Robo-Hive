@@ -158,10 +158,14 @@ namespace RPA_Slayer
         {
             try
             {
-                //import the class from the Helpers folder
-
-                orchestratorConfig orc = new orchestratorConfig();
-                orc.ShowForm();
+                if (wfDesigner.WorkflowFilePath == wfDesigner.DefultWorkflowFilePath)
+                {
+                    System.Windows.MessageBox.Show("Please load a workflow first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                
+                orchestratorCommunications orc = new orchestratorCommunications();
+                orc.ShowForm(wfDesigner.WorkflowFilePath);
 
 
             }
