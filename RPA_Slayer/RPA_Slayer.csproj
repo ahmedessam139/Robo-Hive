@@ -65,8 +65,8 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Browser-Engine">
-      <HintPath>Activities\Custom Acitivities\Browser-Engine\Browser-Engine\bin\Debug\Browser-Engine.dll</HintPath>
+
+ 
     </Reference>
     <Reference Include="IO-Modules">
       <HintPath>Activities\Custom Acitivities\IO-Modules\IO-Modules\IO-Modules\bin\Debug\IO-Modules.dll</HintPath>
@@ -76,6 +76,9 @@
     </Reference>
     <Reference Include="Processes Control">
       <HintPath>Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll</HintPath>
+    </Reference>
+    <Reference Include="Roro.Activities.Excel">
+      <HintPath>..\..\..\..\Downloads\Compressed\roro-20180825_dotnetframework_winforms\roro-20180825_dotnetframework_winforms\bin\Roro.Release\Roro.Activities.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Shortcuts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
