@@ -65,8 +65,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Browser-Engine">
-      <HintPath>Activities\Custom Acitivities\Browser-Engine\Browser-Engine\bin\Debug\Browser-Engine.dll</HintPath>
+    <Reference Include="Browser-Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Activities\Assemblies\Browser-Engine.dll</HintPath>
     </Reference>
     <Reference Include="Excel">
       <HintPath>Activities\Assemblies\Excel.dll</HintPath>
