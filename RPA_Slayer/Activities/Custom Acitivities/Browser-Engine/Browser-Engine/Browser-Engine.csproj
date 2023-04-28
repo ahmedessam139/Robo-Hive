@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Click Element.cs" />
+    <Compile Include="Close Browser.cs" />
+    <Compile Include="Get Element Text.cs" />
     <Compile Include="Open Browser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
