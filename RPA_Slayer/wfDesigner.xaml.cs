@@ -85,70 +85,51 @@ namespace RPA_Slayer
         }
         private ToolboxControl GetToolboxControl()
         {
-
-
-            ToolboxControl toolboxControl = new ToolboxControl();
-
-
-
-            //AppDomain.CurrentDomain.Load("System.Activities");
-            //AppDomain.CurrentDomain.Load("System.ServiceModel.Activities");
-            //AppDomain.CurrentDomain.Load("System.Activities.Core.Presentation");
+            // Load assemblies
             AppDomain.CurrentDomain.Load("IO-Modules");
             AppDomain.CurrentDomain.Load("Processes Control");
             AppDomain.CurrentDomain.Load("Shortcuts");
             AppDomain.CurrentDomain.Load("Browser-Engine");
             AppDomain.CurrentDomain.Load("Excel");
 
-
-
-
-
-
-
-
-
-            // get all loaded assemblies
-            IEnumerable<Assembly> appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
-
-            // check if assemblies contain activities
+            var toolboxControl = new ToolboxControl();
+            var appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
             int activitiesCount = 0;
-            foreach (Assembly activityLibrary in appAssemblies)
+
+            foreach (var activityLibrary in appAssemblies)
             {
                 var wfToolboxCategory = new ToolboxCategory(activityLibrary.GetName().Name);
-                var actvities = from
-                                    activityType in activityLibrary.GetExportedTypes()
-                                where
-                                    (activityType.IsSubclassOf(typeof(Activity))
-                                    || activityType.IsSubclassOf(typeof(NativeActivity))
-                                    || activityType.IsSubclassOf(typeof(DynamicActivity))
-                                    || activityType.IsSubclassOf(typeof(ActivityWithResult))
-                                    || activityType.IsSubclassOf(typeof(AsyncCodeActivity))
-                                    || activityType.IsSubclassOf(typeof(CodeActivity))
-                                    || activityType == typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<Type>)
-                                    || activityType == typeof(System.Activities.Statements.FlowNode)
-                                    || activityType == typeof(System.Activities.Statements.State)
-                                    || activityType == typeof(System.Activities.Core.Presentation.FinalState)
-                                    || activityType == typeof(System.Activities.Statements.FlowDecision)
-                                    || activityType == typeof(System.Activities.Statements.FlowNode)
-                                    || activityType == typeof(System.Activities.Statements.FlowStep)
-                                    || activityType == typeof(System.Activities.Statements.FlowSwitch<Type>)
-                                    || activityType == typeof(System.Activities.Statements.ForEach<Type>)
-                                    || activityType == typeof(System.Activities.Statements.Switch<Type>)
-                                    || activityType == typeof(System.Activities.Statements.TryCatch)
-                                    || activityType == typeof(System.Activities.Statements.While))
-                                    && activityType.IsVisible
-                                    && activityType.IsPublic
-                                    && !activityType.IsNested
-                                    && !activityType.IsAbstract
-                                    && (activityType.GetConstructor(Type.EmptyTypes) != null)
-                                    && !activityType.Name.Contains('`')                                 //optional, for extra cleanup
-                                orderby
-                                    activityType.Name
-                                select
-                                    new ToolboxItemWrapper(activityType);
+                var selectedActivities = activityLibrary.GetExportedTypes()
+                    .Where(activityType => activityType.IsVisible
+                        && activityType.IsPublic
+                        && !activityType.IsNested
+                        && !activityType.IsAbstract
+                        && activityType.GetConstructor(Type.EmptyTypes) != null
+                        && !activityType.Name.Contains('`')
+                        && (activityType.IsSubclassOf(typeof(Activity))
+                            || activityType.IsSubclassOf(typeof(NativeActivity))
+                            || activityType.IsSubclassOf(typeof(DynamicActivity))
+                            || activityType.IsSubclassOf(typeof(ActivityWithResult))
+                            || activityType.IsSubclassOf(typeof(AsyncCodeActivity))
+                            || activityType.IsSubclassOf(typeof(CodeActivity))
+                            || activityType == typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<Type>)
+                            || activityType == typeof(System.Activities.Statements.FlowNode)
+                            || activityType == typeof(System.Activities.Statements.State)
+                            || activityType == typeof(System.Activities.Core.Presentation.FinalState)
+                            || activityType == typeof(System.Activities.Statements.FlowDecision)
+                            || activityType == typeof(System.Activities.Statements.FlowStep)
+                            || activityType == typeof(System.Activities.Statements.FlowSwitch<Type>)
+                            || activityType == typeof(System.Activities.Statements.ForEach<Type>)
+                            || activityType == typeof(System.Activities.Statements.Switch<Type>)
+                            || activityType == typeof(System.Activities.Statements.TryCatch)
+                            || activityType == typeof(System.Activities.Statements.While)))
+                    .OrderBy(activityType => activityType.Name)
+                    .Select(activityType => new ToolboxItemWrapper(activityType));
 
-                actvities.ToList().ForEach(wfToolboxCategory.Add);
+                foreach (var toolboxItemWrapper in selectedActivities)
+                {
+                    wfToolboxCategory.Add(toolboxItemWrapper);
+                }
 
                 if (wfToolboxCategory.Tools.Count > 0)
                 {
@@ -156,61 +137,10 @@ namespace RPA_Slayer
                     activitiesCount += wfToolboxCategory.Tools.Count;
                 }
             }
-            //fixed ForEach
-            
-
-
-            //fixid activites
-
-
-            /*
-
-            toolboxControl.Categories.Add(new ToolboxCategory("Basic Activities")
-            {
-                new ToolboxItemWrapper(typeof(Sequence)),
-                new ToolboxItemWrapper(typeof(WriteLine)),
-                new ToolboxItemWrapper(typeof(Assign)),
-                new ToolboxItemWrapper(typeof(InvokeWebService))
-            });
-
-            toolboxControl.Categories.Add(new ToolboxCategory("Control Flow Activities")
-            {
-                new ToolboxItemWrapper(typeof(Flowchart)),
-                new ToolboxItemWrapper(typeof(FlowSwitch<>)),
-                new ToolboxItemWrapper(typeof(FlowDecision)),
-                new ToolboxItemWrapper(typeof(Parallel)),
-                new ToolboxItemWrapper(typeof(TransactionScope)),
-                new ToolboxItemWrapper(typeof(While)),
-                new ToolboxItemWrapper(typeof(DoWhile)),
-                new ToolboxItemWrapper(typeof(ForEach<>)),
-                new ToolboxItemWrapper(typeof(ParallelForEach<>)),
-                new ToolboxItemWrapper(typeof(TryCatch)),
-                new ToolboxItemWrapper(typeof(Rethrow)),
-                new ToolboxItemWrapper(typeof(Delay)),
-                new ToolboxItemWrapper(typeof(If)),
-                new ToolboxItemWrapper(typeof(Throw))
-            });
-
-            toolboxControl.Categories.Add(new ToolboxCategory("Collection Activities")
-            {
-                new ToolboxItemWrapper(typeof(AddToCollection<>)),
-                new ToolboxItemWrapper(typeof(ClearCollection<>)),
-                new ToolboxItemWrapper(typeof(RemoveFromCollection<>)),
-                new ToolboxItemWrapper(typeof(ExistsInCollection<>))
-            });
-
-
-            toolboxControl.Categories.Add(new ToolboxCategory("Error Handling Activities")
-            {
-                new ToolboxItemWrapper(typeof(TransactionScope)),
-                new ToolboxItemWrapper(typeof(TryCatch)),
-                new ToolboxItemWrapper(typeof(Rethrow)),
-                new ToolboxItemWrapper(typeof(Throw))
-            });
-            */
 
             return toolboxControl;
         }
+
         private void AddToolBox()
         {
             ToolboxControl tc = GetToolboxControl();

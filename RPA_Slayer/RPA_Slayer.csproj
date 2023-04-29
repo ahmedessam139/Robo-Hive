@@ -81,9 +81,8 @@
     <Reference Include="Processes Control">
       <HintPath>Activities\Custom Acitivities\Processes Control\Processes Control\bin\Debug\Processes Control.dll</HintPath>
     </Reference>
-    <Reference Include="Shortcuts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Activities\Custom Acitivities\Shortcuts\Shortcuts\bin\Debug\Shortcuts.dll</HintPath>
+    <Reference Include="Shortcuts">
+      <HintPath>Activities\Assemblies\Shortcuts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
@@ -102,6 +101,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>Activities\Custom Acitivities\Browser-Engine\Browser-Engine\bin\Debug\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

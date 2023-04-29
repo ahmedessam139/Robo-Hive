@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json;
 
@@ -29,7 +28,7 @@ namespace RPA_Slayer.Helpers
             using (var httpClient = new HttpClient())
             {
                 //var apiUrl = "http://localhost:8000/api/upload";
-                var apiUrl = "http://192.168.1.143:8000/api/packages/create";
+                var apiUrl = "http://35.242.197.187/api/packages/create";
 
 
                 var payload = new
