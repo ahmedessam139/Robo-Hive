@@ -59,6 +59,13 @@
             <TabItem Header="WorkflowProperty">
                 <ContentControl Name="WorkflowPropertyPanel"/>
             </TabItem>
+            <TabItem Header="File Explorer" Margin="-2,-2,-2,0">
+                <ContentControl x:Name="WorkflowFileExplorer">
+                    <Label Content="Wokflow is empty" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Top" Height="44" Width="147"/>
+                </ContentControl>
+
+            </TabItem>
+
         </TabControl>
     </Grid>
 </UserControl>

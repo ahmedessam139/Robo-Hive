@@ -25,6 +25,7 @@ using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace RPA_Slayer
 {
@@ -35,7 +36,7 @@ namespace RPA_Slayer
         public IDesignerDebugView DebuggerService;
 
         public const String DefultWorkflowFilePath = @"..\..\DefaultWorkflows\defaultWorkflow.xaml";
-        public string WorkflowFilePath = DefultWorkflowFilePath;
+        public  string WorkflowFilePath = DefultWorkflowFilePath;
 
         TextBox logsTxtbox;
 
@@ -73,16 +74,41 @@ namespace RPA_Slayer
 
             }
 
-
+            //nevermind
 
             this.workflowDesignerPanel.Content = this.WorkflowDesigner.View;
             this.AddPropertyInspector();
+            if (WorkflowFilePath == @"..\..\DefaultWorkflows\defaultWorkflow.xaml")
+            {
+                // Do nothing
+            }
+            else
+            {
+                this.SetupFileExplorer();
+
+            }
 
 
             //Updating the mapping between Model item and Source Location as soon as you load the designer so that BP setting can re-use that information from the DesignerSourceLocationMapping.
 
 
         }
+        public  string CutStringAtLastBackslash(string input)
+        {
+            int lastBackslashIndex = input.LastIndexOf('\\');
+            if (lastBackslashIndex >= 0)
+            {
+                return input.Substring(0, lastBackslashIndex + 1);
+            }
+            else
+            {
+                return input;
+            }
+        }
+
+       // var folderPath = CutStringAtLastBackslash(DefultWorkflowFilePath);
+        //string folderPath = CutStringAtLastBackslash(wfDesigner.WorkflowFilePath);
+        
         private ToolboxControl GetToolboxControl()
         {
             // Load assemblies
@@ -152,6 +178,102 @@ namespace RPA_Slayer
                 return;
 
             this.WorkflowPropertyPanel.Content = this.WorkflowDesigner.PropertyInspectorView;
+        }
+
+        private void SetupFileExplorer()
+        {
+            var root = new TreeViewItem();
+            root.Header = "Explorer";
+            root.Tag = new DirectoryInfo(CutStringAtLastBackslash(WorkflowFilePath)); // Set the root directory here
+
+            PopulateTreeView(root);
+            WorkflowFileExplorer.Content = root;
+        }
+
+        private void PopulateTreeView(TreeViewItem item)
+        {
+            var directory = item.Tag as DirectoryInfo;
+            if (directory == null)
+            {
+                return;
+            }
+
+            try
+            {
+                foreach (var subDirectory in directory.GetDirectories())
+                {
+                    var subItem = new TreeViewItem();
+                    subItem.Header = subDirectory.Name;
+                    subItem.Tag = subDirectory;
+
+                    subItem.Items.Add("*"); // Placeholder item to allow expansion
+
+                    subItem.Expanded += (s, e) =>
+                    {
+                        if (subItem.Items.Count == 1 && subItem.Items[0] is string)
+                        {
+                            subItem.Items.Clear();
+
+                            try
+                            {
+                                foreach (var subSubDirectory in subDirectory.GetDirectories())
+                                {
+                                    var subSubItem = new TreeViewItem();
+                                    subSubItem.Header = subSubDirectory.Name;
+                                    subSubItem.Tag = subSubDirectory;
+
+                                    subSubItem.Items.Add("*"); // Placeholder item to allow expansion
+
+                                    subSubItem.Expanded += (s1, e1) =>
+                                    {
+                                        if (subSubItem.Items.Count == 1 && subSubItem.Items[0] is string)
+                                        {
+                                            subSubItem.Items.Clear();
+
+                                            try
+                                            {
+                                                foreach (var file in subSubDirectory.GetFiles())
+                                                {
+                                                    var fileItem = new TreeViewItem();
+                                                    fileItem.Header = file.Name;
+                                                    fileItem.Tag = file;
+
+                                                    subSubItem.Items.Add(fileItem);
+                                                }
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                // Handle exception
+                                            }
+                                        }
+                                    };
+
+                                    subItem.Items.Add(subSubItem);
+                                }
+
+                                foreach (var file in subDirectory.GetFiles())
+                                {
+                                    var fileItem = new TreeViewItem();
+                                    fileItem.Header = file.Name;
+                                    fileItem.Tag = file;
+
+                                    subItem.Items.Add(fileItem);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                // Handle exception
+                            }
+                        }
+                    };
+
+                    item.Items.Add(subItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+            }
         }
 
         private void TabItem_GotFocus_RefreshXamlBox(object sender, RoutedEventArgs e)
