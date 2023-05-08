@@ -74,7 +74,7 @@ namespace RPA_Slayer
 
             }
 
-
+            //nevermind
 
             this.workflowDesignerPanel.Content = this.WorkflowDesigner.View;
             this.AddPropertyInspector();
