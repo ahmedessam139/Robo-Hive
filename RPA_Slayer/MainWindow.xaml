@@ -49,6 +49,12 @@
 
                 </StackPanel>
             </GroupBox>
+            <GroupBox Header="Recording" Width="238">
+                <StackPanel Orientation="Horizontal" Margin="0,0,-3,0">
+                    <Button x:Name="startRecording" Content="Start Recording" Height="35" Width="126" Background="#FFF96837" Click="start_Recording"  />
+                    <Button x:Name="StopRecording" Content="Stop" Height="35" Width="86" Background="#FFF96837" Click="stop_Recording"  />
+                </StackPanel>
+            </GroupBox>
         </ToolBar>
 
         <Grid Grid.Row="1">

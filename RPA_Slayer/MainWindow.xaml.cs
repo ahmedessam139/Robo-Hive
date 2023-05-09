@@ -177,5 +177,51 @@ namespace RPA_Slayer
 
 
         }
+
+        recording rec = new recording();
+        private void start_Recording(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (wfDesigner.WorkflowFilePath == wfDesigner.DefultWorkflowFilePath)
+                {
+                    System.Windows.MessageBox.Show("Please load a workflow first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                rec.StartRecord(wfDesigner.WorkflowFilePath);
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void stop_Recording(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (wfDesigner.WorkflowFilePath == wfDesigner.DefultWorkflowFilePath)
+                {
+                    System.Windows.MessageBox.Show("Please load a workflow first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                rec.StopRecord(wfDesigner.WorkflowFilePath);
+                wfDesigner.AddWorkflowDesigner();
+                
+
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
     }
 }
