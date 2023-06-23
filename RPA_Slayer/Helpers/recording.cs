@@ -93,9 +93,10 @@ namespace RPA_Slayer.Helpers
 
             // Compute the index of the line before the last 2 lines
             int insertionIndex = Math.Max(0, lines.Length - 2);
-
+            
             // Insert the elements before the line at the insertion index
-            lines[insertionIndex] = string.Join(Environment.NewLine, _elementNames) + Environment.NewLine + lines[insertionIndex];
+            lines[insertionIndex] = string.Join("" + Environment.NewLine, _elementNames) + Environment.NewLine + lines[insertionIndex];
+            lines[0] = "<Activity mc:Ignorable=\"sap sap2010 sads\" x:Class=\"Microsoft.Samples.Workflow\" sap:VirtualizedContainerService.HintSize=\"262,186\" mva:VisualBasic.Settings=\"Assembly references and imported namespaces for internal implementation\"";
 
             // Join the lines back into a single string
             content = string.Join(Environment.NewLine, lines);

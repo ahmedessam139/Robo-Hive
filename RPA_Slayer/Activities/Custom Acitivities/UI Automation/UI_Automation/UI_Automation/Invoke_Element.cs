@@ -23,7 +23,6 @@ namespace UI_Automation
 
             // Get the invoke pattern for the element
             InvokePattern invokePattern = element.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
-
             // Invoke the element
             invokePattern.Invoke();
         }

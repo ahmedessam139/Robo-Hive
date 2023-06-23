@@ -5,6 +5,7 @@
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:u="clr-namespace:UI_Automation;assembly=UI_Automation"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
