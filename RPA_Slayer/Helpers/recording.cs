@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using System.Diagnostics;
 
 namespace RPA_Slayer.Helpers
 {
@@ -32,6 +33,9 @@ namespace RPA_Slayer.Helpers
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool SetLayeredWindowAttributes(IntPtr hWnd, uint crKey, byte bAlpha, uint dwFlags);
 
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         private const int GWL_EXSTYLE = -20;
         private const int WS_EX_LAYERED = 0x80000;
 
@@ -40,6 +44,9 @@ namespace RPA_Slayer.Helpers
 
         public void StartRecord(string workflowFilePath)
         {
+            // Minimize all windows and show the desktop
+            MinimizeAllWindows();
+
             // Find the root element of the desktop
             _rootElement = AutomationElement.RootElement;
 
@@ -53,6 +60,16 @@ namespace RPA_Slayer.Helpers
             Console.WriteLine("Recording started...");
         }
 
+        private void MinimizeAllWindows()
+        {
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
+            {
+                IntPtr hWnd = process.MainWindowHandle;
+                ShowWindow(hWnd, 2); // Minimize window
+            }
+        }
+
         private void CreateOverlayForm()
         {
             overlayForm = new Form();
@@ -61,23 +78,32 @@ namespace RPA_Slayer.Helpers
             overlayForm.BackColor = Color.Black;
             overlayForm.TransparencyKey = Color.Black;
             overlayForm.TopMost = true;
-            overlayForm.Size = new Size(300, 75); // Set the desired size of the overlay form
+            overlayForm.Size = new Size(400, 100); // Set the desired size of the overlay form
             overlayForm.StartPosition = FormStartPosition.Manual;
             overlayForm.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - overlayForm.Width, Screen.PrimaryScreen.WorkingArea.Bottom - overlayForm.Height); // Position the form in the bottom right corner
 
             overlayLabel = new Label();
-            overlayLabel.Text = "Recording......\nPress F8 to stop";
             overlayLabel.ForeColor = Color.White;
             overlayLabel.Font = new Font("Arial", 14, FontStyle.Bold);
             overlayLabel.AutoSize = true;
-            overlayLabel.Location = new Point(10, 10);
+            overlayLabel.Location = new Point(40, 10);
+            overlayLabel.Text = "Recording......\n\nPress F8 to stop recording";
+
+            Label dotLabel = new Label();
+            dotLabel.ForeColor = Color.Red;
+            dotLabel.Font = new Font("Arial", 16, FontStyle.Bold);
+            dotLabel.AutoSize = true;
+            dotLabel.Location = new Point(10, 10);
+            dotLabel.Text = "●"; // Red dot symbol
 
             overlayForm.Controls.Add(overlayLabel);
+            overlayForm.Controls.Add(dotLabel);
             overlayForm.Show();
 
             SetWindowLong(overlayForm.Handle, GWL_EXSTYLE, GetWindowLong(overlayForm.Handle, GWL_EXSTYLE) | WS_EX_LAYERED | WS_EX_NOACTIVATE);
             SetLayeredWindowAttributes(overlayForm.Handle, 0, 128, 0x2);
         }
+
 
         private void DestroyOverlayForm()
         {
@@ -130,6 +156,7 @@ namespace RPA_Slayer.Helpers
             // Destroy the overlay form
             DestroyOverlayForm();
 
+
             // Read the content of the file
             string content = File.ReadAllText(filePath);
             // Split the content into lines
@@ -148,5 +175,7 @@ namespace RPA_Slayer.Helpers
             // Return the updated content
             return content;
         }
+
+       
     }
 }
