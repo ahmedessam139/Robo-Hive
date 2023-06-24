@@ -14,19 +14,40 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RPA_Slayer.Helpers;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Activities;
+using System.Windows.Interop;
+
+
 //Tmam
 
 namespace RPA_Slayer
 {
-    
 
-    
+
+
     public partial class MainWindow : Window
     {
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        const int MYACTION_HOTKEY_ID = 1;
+
+        private HwndSource hwndSource;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            // Attach an event handler to the SourceInitialized event
+            SourceInitialized += MainWindow_SourceInitialized;
         }
+
+       
+        
 
         private void btnRunLoadedWorkflow_Click(object sender, RoutedEventArgs e)
         {
@@ -223,5 +244,56 @@ namespace RPA_Slayer
             }
 
         }
+
+
+
+        #region Key_Hook_region
+        private void MainWindow_SourceInitialized(object sender, EventArgs e)
+        {
+            // Retrieve the window handle
+            IntPtr windowHandle = new WindowInteropHelper(this).Handle;
+
+            // Register the hotkey using the window handle
+            RegisterHotKey(windowHandle, MYACTION_HOTKEY_ID, 0, (int)Keys.F8);
+
+            // Create the HwndSource instance
+            hwndSource = HwndSource.FromHwnd(windowHandle);
+            hwndSource.AddHook(HwndSourceHook);
+
+            // Remove the event handler after it's done
+            SourceInitialized -= MainWindow_SourceInitialized;
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            // Unregister the hotkey
+            IntPtr windowHandle = new WindowInteropHelper(this).Handle;
+            UnregisterHotKey(windowHandle, MYACTION_HOTKEY_ID);
+
+            // Detach the HwndSource and remove the hook
+            hwndSource.RemoveHook(HwndSourceHook);
+            hwndSource.Dispose();
+            hwndSource = null;
+
+            base.OnClosed(e);
+        }
+
+        private IntPtr HwndSourceHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int WM_HOTKEY = 0x0312;
+
+            if (msg == WM_HOTKEY && wParam.ToInt32() == MYACTION_HOTKEY_ID)
+            {
+                rec.StopRecord(wfDesigner.WorkflowFilePath);
+                wfDesigner.AddWorkflowDesigner();
+            }
+
+            return IntPtr.Zero;
+        }
+
+
+        #endregion
+
+
     }
 }

@@ -1,4 +1,35 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Microsoft.Samples.Workflow" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Microsoft.Samples.Workflow_1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Microsoft.Samples.Workflow" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Microsoft.Samples.Workflow_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
