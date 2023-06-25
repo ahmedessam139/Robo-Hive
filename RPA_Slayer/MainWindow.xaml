@@ -14,48 +14,48 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ToolBar Height="80" VerticalAlignment="Center" Margin="0,0,-530,0">
-            <GroupBox Header="File Management">
+        <TabControl Height="80" VerticalAlignment="Center" Margin="0,0,-530,0">
+            <TabItem Header="File Management">
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SaveExportButton" Content="Save/Export" Height="35" Width="100" Background="#FFA9BFD9" Click="btnSaveWorkflow_Click" />
                     <Button x:Name="OpenButton" Content="Open" Height="35" Width="100" Background="#FFA9BFD9" Click="btnOpenWorkflow_Click"/>
                     <Button x:Name="NewButton" Content="New" Height="35" Width="100" Background="#FFA9BFD9" Click="btnNewWorkflow_Click" />
                 </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Workflow Execution">
+            </TabItem>
+            <TabItem Header="Workflow Execution">
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="RunButton" Content="Run" Height="35" Width="100" Background="#FFCE9595" Click="btnFastRunWorkflow_Click" />
                     <Button x:Name="StopButton" Content="Stop" Height="35" Width="100" Background="#FFCE9595" Click="btnStopWorkflow_Click" />
                 </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Debugging" Width="241">
+            </TabItem>
+            <TabItem Header="Debugging">
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="DebugButton" Content="Debug" Height="35" Width="100" Background="#FFEECA3D" Click="btnRunLoadedWorkflow_Click"/>
                     <Button x:Name="DStopButton" Height="35" Width="40" Content="S" Background="#FFEECA3D" Click="btnStopDep_Click" />
                     <Button x:Name="DBreakpointButton" Height="35" Width="40" Content="B" Background="#FFEECA3D" Click="btnBreakpointToggle_Click" />
                     <Button x:Name="DContinueButton" Height="35" Width="40" Content="C" Background="#FFEECA3D" Click="btnContinue_Click" />
                 </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Edit">
+            </TabItem>
+            <TabItem Header="Edit">
                 <StackPanel Orientation="Horizontal">
                     <Button Content="UNDO" Height="35" Width="60" />
                     <Button Content="REDO" Height="35" Width="60" />
                 </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Orchestrator" Width="215">
+            </TabItem>
+            <TabItem Header="Orchestrator">
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="sendToOrc" Content="Send to Orc" Height="35" Width="100" Background="#FF73D979" Click="sendToOrc_Click"  />
                     <Button x:Name="connect" Content="Connect to Orc" Height="35" Width="100" Background="#FF73D979"  />
-
                 </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Recording" Width="238">
+            </TabItem>
+            <TabItem Header="Recording">
                 <StackPanel Orientation="Horizontal" Margin="0,0,-3,0">
                     <Button x:Name="startRecording" Content="Start Recording" Height="35" Width="126" Background="#FFF96837" Click="start_Recording"  />
                     <Button x:Name="StopRecording" Content="Stop" Height="35" Width="86" Background="#FFF96837" Click="stop_Recording"  />
                 </StackPanel>
-            </GroupBox>
-        </ToolBar>
+            </TabItem>
+        </TabControl>
+
 
         <Grid Grid.Row="1">
 

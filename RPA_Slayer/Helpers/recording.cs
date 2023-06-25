@@ -54,7 +54,7 @@ namespace RPA_Slayer.Helpers
             CreateOverlayForm();
 
             // Subscribe to UI automation events
-            Automation.AddAutomationEventHandler(InvokePattern.InvokedEvent, _rootElement, TreeScope.Descendants, OnInvoked);
+            //Automation.AddAutomationEventHandler(InvokePattern.InvokedEvent, _rootElement, TreeScope.Descendants, OnInvoked);
             Automation.AddAutomationFocusChangedEventHandler(OnFocusChanged);
 
             Console.WriteLine("Recording started...");
@@ -118,12 +118,8 @@ namespace RPA_Slayer.Helpers
             try
             {
                 AutomationElement focusedElement = sender as AutomationElement;
-
-                if (focusedElement != null)
-                {
-                    Console.WriteLine("Focused element AutomationId------>: {0}", focusedElement.Current.AutomationId);
-                    Console.WriteLine("Focused element Name------>: {0}", focusedElement.Current.Name);
-                }
+                string elementName = focusedElement.Current.Name;
+                Console.WriteLine("Focus changed to: " + elementName);
             }
             catch (Exception ex)
             {
@@ -134,6 +130,7 @@ namespace RPA_Slayer.Helpers
         private void OnInvoked(object sender, AutomationEventArgs e)
         {
             AutomationElement element = sender as AutomationElement;
+            Console.WriteLine("Invoked element AutomationId------>: {0}", element.Current.AutomationId);
             if (element != null)
             {
                 _recordedActions.Add(element);
