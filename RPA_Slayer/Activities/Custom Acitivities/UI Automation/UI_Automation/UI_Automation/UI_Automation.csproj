@@ -47,6 +47,7 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FocusElement.cs" />
     <Compile Include="Invoke_Element.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
