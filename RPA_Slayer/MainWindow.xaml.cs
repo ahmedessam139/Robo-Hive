@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Activities;
 using System.Windows.Interop;
+using MahApps.Metro.Controls;
 
 
 //Tmam
@@ -27,7 +28,7 @@ namespace RPA_Slayer
 
 
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
