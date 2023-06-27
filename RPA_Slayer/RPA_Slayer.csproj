@@ -122,6 +122,9 @@
     <Reference Include="UIAutomationClientsideProviders" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
+    <Reference Include="UI_Automation">
+      <HintPath>Activities\Custom Acitivities\UI Automation\UI_Automation\UI_Automation\bin\Debug\UI_Automation.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

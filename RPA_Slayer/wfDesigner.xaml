@@ -28,7 +28,7 @@
         <GridSplitter  HorizontalAlignment="Left" Width="5" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="208,0,0,0" />
 
         <TabControl Margin="0,0,5,0" Grid.Column="0" Grid.Row="1">
-            <TabItem Header="Logs" Margin="63,1,-70,-4" RenderTransformOrigin="0.887,0.741" mah:HeaderedControlHelper.HeaderFontSize="15" mah:HeaderedControlHelper.HeaderVerticalContentAlignment="Top">
+            <TabItem Header="Logs" Margin="74,2,-81,-1" RenderTransformOrigin="0.887,0.741" mah:HeaderedControlHelper.HeaderFontSize="15" mah:HeaderedControlHelper.HeaderVerticalContentAlignment="Top">
                 <Grid Grid.Column="0" Grid.Row="0" x:Name="TrackingRecord" Margin="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*" />
@@ -36,7 +36,7 @@
                     </Grid.RowDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem Header="  Output" Margin="-50,2,0,0" FontSize="15" FontFamily="Maiandra GD" mah:HeaderedControlHelper.HeaderFontSize="15" mah:HeaderedControlHelper.HeaderVerticalContentAlignment="Top" HorizontalAlignment="Left" Width="61">
+            <TabItem Header="  Output" Margin="-43,2,0,0" FontSize="15" FontFamily="Maiandra GD" mah:HeaderedControlHelper.HeaderFontSize="15" mah:HeaderedControlHelper.HeaderVerticalContentAlignment="Top" HorizontalAlignment="Left" Width="72">
                 <Grid Grid.Column="0" Grid.Row="0" x:Name="output" Margin="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="17*"/>
@@ -48,7 +48,7 @@
                     </Grid.RowDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem Header="Toolbox" Margin="28,1,0,-2" HorizontalAlignment="Left" Width="106" mah:HeaderedControlHelper.HeaderFontSize="15" mah:HeaderedControlHelper.HeaderVerticalContentAlignment="Top">
+            <TabItem Header="Toolbox" Margin="10,2,0,-3" HorizontalAlignment="Left" Width="77" mah:HeaderedControlHelper.HeaderFontSize="15" mah:HeaderedControlHelper.HeaderVerticalContentAlignment="Top">
                 <ContentControl x:Name="toolboxPanel"/>
             </TabItem>
         </TabControl>
@@ -64,7 +64,7 @@
             <TabItem Header="WorkflowProperty" mah:HeaderedControlHelper.HeaderFontSize="10">
                 <ContentControl x:Name="WorkflowPropertyPanel"/>
             </TabItem>
-            <TabItem Header="File Explorer" Margin="5,-2,-9,0" mah:HeaderedControlHelper.HeaderFontSize="10">
+            <TabItem Header="File Explorer" Margin="1,0,-5,-2" mah:HeaderedControlHelper.HeaderFontSize="10">
                 <ContentControl x:Name="WorkflowFileExplorer">
                     <Label Content="Wokflow is empty" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Top" Height="44" Width="147"/>
                 </ContentControl>

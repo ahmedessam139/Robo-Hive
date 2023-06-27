@@ -114,10 +114,11 @@ namespace RPA_Slayer
             // Load assemblies
             AppDomain.CurrentDomain.Load("IO-Modules");
             AppDomain.CurrentDomain.Load("Processes Control");
-           
             AppDomain.CurrentDomain.Load("Browser-Engine");
-           
-           
+            AppDomain.CurrentDomain.Load("Excel");
+            AppDomain.CurrentDomain.Load("UI_Automation");
+
+
 
             var toolboxControl = new ToolboxControl();
             var appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
