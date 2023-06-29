@@ -27,8 +27,8 @@
 
             <Button Content="Login" FontSize="16" Height="40"  Background="#FF4CAF50" Foreground="#FFECECEC" Margin="0,20,0,0" Click="loginButton_Click"/>
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <Button Content="Forget Password" FontSize="14" Height="30" Background="#00000000" Foreground="#FFECECEC" Margin="0,0,20,0" Padding="10,1,10,1"/>
-                <Button Content="Sign up" FontSize="14" Height="30" Background="Transparent" Foreground="#FFECECEC" Margin="0,0,20,0" Padding="10,1,10,1"/>
+                <Button Content="Forget Password" FontSize="14" Height="30" Background="#00000000" Foreground="#FFECECEC" Margin="0,0,20,0" Padding="10,1,10,1" Click="forgetPassword_click"/>
+                <Button Content="Sign up" FontSize="14" Height="30" Background="Transparent" Foreground="#FFECECEC" Margin="0,0,20,0" Padding="10,1,10,1" Click="signUp_click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

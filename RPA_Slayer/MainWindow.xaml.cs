@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RPA_Slayer.Helpers;
+using RPA_Slayer.Pages;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Activities;
@@ -185,10 +186,12 @@ namespace RPA_Slayer
                     System.Windows.MessageBox.Show("Please load a workflow first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                
-                orchestratorCommunications orc = new orchestratorCommunications();
-                orc.ShowForm(wfDesigner.WorkflowFilePath);
 
+                //orchestratorCommunications orc = new orchestratorCommunications();
+                //orc.ShowForm(wfDesigner.WorkflowFilePath);
+
+                Orc_Config orc = new Orc_Config("dksk");
+                orc.Show();
 
             }
             catch (Exception ex)    

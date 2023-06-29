@@ -61,10 +61,10 @@
             </TabItem>
         </TabControl>
         <TabControl Margin="5,0,0,0" Grid.Column="2" Grid.Row="1">
-            <TabItem Header="WorkflowProperty" mah:HeaderedControlHelper.HeaderFontSize="10">
+            <TabItem Header="WorkflowProperty" mah:HeaderedControlHelper.HeaderFontSize="15">
                 <ContentControl x:Name="WorkflowPropertyPanel"/>
             </TabItem>
-            <TabItem Header="File Explorer" Margin="1,0,-5,-2" mah:HeaderedControlHelper.HeaderFontSize="10">
+            <TabItem Header="File Explorer" Margin="1,0,-5,-2" mah:HeaderedControlHelper.HeaderFontSize="15">
                 <ContentControl x:Name="WorkflowFileExplorer">
                     <Label Content="Wokflow is empty" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Top" Height="44" Width="147"/>
                 </ContentControl>

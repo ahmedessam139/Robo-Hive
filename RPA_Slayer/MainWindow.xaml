@@ -14,7 +14,7 @@
 
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="84" />
+            <RowDefinition Height="Auto" MinHeight="85" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -179,11 +179,12 @@
                     </Button>
                 </StackPanel>
             </TabItem>
+            
 
 
-            <TabItem Header="Record    " mah:HeaderedControlHelper.HeaderFontSize="15">
+            <TabItem Header="Record" mah:HeaderedControlHelper.HeaderFontSize="15">
                 <StackPanel Orientation="Horizontal" Margin="0,0,-3,20">
-                    <Button x:Name="startRecording" Height="35" Width="50" Background="#FFF96837">
+                    <Button x:Name="startRecording" Height="35" Width="50" Background="#FFF96837" Click="start_Recording">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -191,7 +192,7 @@
                         </Button.Template>
                         <Image Source="Images/record.png" Height="45" Width="45" />
                     </Button>
-                    <Button x:Name="StopRecording" Height="35" Width="86" Background="#FFF96837">
+                    <Button x:Name="StopRecording" Height="35" Width="86" Background="#FFF96837" Click="stop_Recording">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -201,6 +202,35 @@
                     </Button>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Activities Management" mah:HeaderedControlHelper.HeaderFontSize="15" Margin="10,0,-11,0" >
+                <StackPanel Orientation="Horizontal" Margin="0,0,-3,20">
+                    <Button x:Name="addLibrary" Height="35" Width="120" Background="#FF73D979">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock Text="Add Library" />
+                    </Button>
+                    <Button x:Name="removeLibrary" Height="35" Width="120" Background="#FF73D979">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock Text="Remove Library" />
+                    </Button>
+                    <Button x:Name="addCustomLibrary" Height="35" Width="140" Background="#FF73D979">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock Text="Add Custom Library" />
+                    </Button>
+                </StackPanel>
+            </TabItem>
+
         </TabControl>
 
 
@@ -217,7 +247,7 @@
             </Grid.RowDefinitions>
 
             <local:wfDesigner x:Name="wfDesigner" Grid.RowSpan="2" />
-            <StatusBar Name="workflowStatusBar" Grid.Row="2" Height="25" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" />
+            <StatusBar Name="workflowStatusBar" Grid.Row="2" Height="5" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" />
         </Grid>
 
     </Grid>

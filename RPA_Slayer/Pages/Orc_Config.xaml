@@ -1,0 +1,34 @@
+﻿<mah:MetroWindow x:Class="RPA_Slayer.Pages.Orc_Config"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:RPA_Slayer.Pages"
+        mc:Ignorable="d"
+        Title="Orc_Config" Height="350" Width="598">
+    <Grid Margin="10,10,0,4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Package Name:" Grid.Row="0" Margin="20" />
+        <TextBox x:Name="nameTextBox" Grid.Row="0" Margin="200,0,20,10" />
+
+        <TextBlock Text="Date:" Grid.Row="1" Margin="20" />
+        <DatePicker x:Name="datePicker" Grid.Row="1" Margin="200,0,20,10" />
+
+        <TextBlock Text="Time:" Grid.Row="2" Margin="20" />
+        <mah:TimePicker x:Name="timePicker" Grid.Row="2" Margin="200,0,20,10" />
+
+        <Button Content="Select Another XAML File" Grid.Row="3" Margin="213,20,204,20" />
+        <TextBlock x:Name="xamlLabel" Text="TestBath" Grid.Row="3" Margin="20,25,0,0" />
+
+        <Button Content="Send" Grid.Row="4" Margin="224,20,220,20" />
+
+    </Grid>
+</mah:MetroWindow>
