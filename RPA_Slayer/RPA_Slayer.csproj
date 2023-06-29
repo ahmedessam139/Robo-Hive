@@ -245,6 +245,17 @@
     <Resource Include="Images\undo.png" />
     <Resource Include="Images\upload.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\save %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\monitor.png" />
+    <Resource Include="Images\new-document.png" />
+    <Resource Include="Images\open %281%29.png" />
+    <Resource Include="Images\play.png" />
+    <Resource Include="Images\stop %281%29.png" />
+    <Resource Include="Images\stop-button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets" Condition="Exists('..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
