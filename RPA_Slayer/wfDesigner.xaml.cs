@@ -106,24 +106,49 @@ namespace RPA_Slayer
             }
         }
 
-       // var folderPath = CutStringAtLastBackslash(DefultWorkflowFilePath);
+        // var folderPath = CutStringAtLastBackslash(DefultWorkflowFilePath);
         //string folderPath = CutStringAtLastBackslash(wfDesigner.WorkflowFilePath);
-        
+
         private ToolboxControl GetToolboxControl()
         {
-
             // Load assemblies
-            AppDomain.CurrentDomain.Load("IO-Modules");
-            AppDomain.CurrentDomain.Load("Processes Control");
-            AppDomain.CurrentDomain.Load("Browser-Engine");
-            AppDomain.CurrentDomain.Load("UI_Automation");
-            AppDomain.CurrentDomain.Load("Shortcuts");
+            string directoryPath = @"..\..\Activities\Assemblies"; // Specify the directory path where the assemblies are located
+
+            string[] assemblyFiles = Directory.GetFiles(directoryPath, "*.dll"); // Retrieve all DLL files in the directory
+
+            string targetDirectoryPath = AppDomain.CurrentDomain.BaseDirectory; // Set the target directory as the "bin" directory
+
+            foreach (string assemblyFile in assemblyFiles)
+            {
+                try
+                {
+                    Console.WriteLine("ay hagga");
+                    string targetFilePath = Path.Combine(targetDirectoryPath, Path.GetFileName(assemblyFile)); // Create the target file path by combining the target directory and the assembly file name
+
+                    File.Copy(assemblyFile, targetFilePath, true); // Copy the assembly file to the target directory
+
+                    AssemblyName assemblyName = AssemblyName.GetAssemblyName(assemblyFile); // Get the AssemblyName from the assembly file
+
+                    Assembly.LoadFrom(assemblyFile); // Load the assembly into the current application domain
+
+                    // Optionally, you can perform further processing with the loaded assembly if needed
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that occur during the assembly loading process
+                    Console.WriteLine($"Error loading assembly '{assemblyFile}': {ex.Message}");
+                }
+            }
+
+            // Return the ToolboxControl object
+            // ...
+        
 
 
 
 
 
-            var toolboxControl = new ToolboxControl();
+        var toolboxControl = new ToolboxControl();
             var appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
             int activitiesCount = 0;
 
