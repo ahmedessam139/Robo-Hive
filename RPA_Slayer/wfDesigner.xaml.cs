@@ -133,11 +133,7 @@ namespace RPA_Slayer
                     Console.WriteLine($"Error loading assembly '{assemblyFile}': {ex.Message}");
                 }
             }
-        
-
-
-
-
+  
 
             var toolboxControl = new ToolboxControl();
             var appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
