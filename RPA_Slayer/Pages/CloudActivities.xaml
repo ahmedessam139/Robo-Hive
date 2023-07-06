@@ -13,7 +13,10 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                        <TextBlock Text="{Binding Version}" FontSize="14" Margin="0,2,0,0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Version: " FontWeight="Bold" FontSize="14" Margin="0,2,0,0"/>
+                            <TextBlock Text="{Binding Version}" FontSize="14" Margin="0,2,0,0"/>
+                        </StackPanel>
                         <TextBlock Text="{Binding Description}" FontSize="14" Margin="0,2,0,0"/>
                     </StackPanel>
                 </DataTemplate>
