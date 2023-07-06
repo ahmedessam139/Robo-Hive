@@ -219,7 +219,7 @@
                         </Button.Template>
                         <TextBlock Text="Remove Library" />
                     </Button>
-                    <Button x:Name="addCustomLibrary" Height="35" Width="140" Background="#FF73D979">
+                    <Button x:Name="addCustomLibrary" Height="35" Width="140" Background="#FF73D979" Click="addCustomLibrary_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />

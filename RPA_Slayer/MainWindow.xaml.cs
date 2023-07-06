@@ -20,6 +20,12 @@ using System.Runtime.InteropServices;
 using System.Activities;
 using System.Windows.Interop;
 using MahApps.Metro.Controls;
+using System.IO;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows;
+using Path = System.IO.Path;
+
 
 
 //Tmam
@@ -310,8 +316,47 @@ namespace RPA_Slayer
 
 
 
+
         #endregion
 
-     
+
+private void addCustomLibrary_Click(object sender, RoutedEventArgs e)
+    {
+        // Create an instance of the OpenFileDialog
+        var openFileDialog = new Microsoft.Win32.OpenFileDialog();
+        openFileDialog.Filter = "DLL files (*.dll)|*.dll";
+        openFileDialog.Title = "Select a DLL file";
+
+        // Show the dialog and check if the user clicked "OK"
+        if (openFileDialog.ShowDialog() == true)
+        {
+            string selectedFilePath = openFileDialog.FileName;
+
+            // Specify the target directory to copy the DLL file
+            string targetDirectory = @"..\..\Activities\Assemblies";
+
+            // Create the target directory if it doesn't exist
+            Directory.CreateDirectory(targetDirectory);
+
+            // Get the file name from the selected file path
+            string fileName = Path.GetFileName(selectedFilePath);
+
+            // Combine the target directory path with the file name
+            string destinationFilePath = Path.Combine(targetDirectory, fileName);
+
+            try
+            {
+                // Copy the selected file to the target directory
+                File.Copy(selectedFilePath, destinationFilePath);
+
+                    System.Windows.MessageBox.Show("DLL file copied successfully!");
+            }
+            catch (IOException ex)
+            {
+                    System.Windows.MessageBox.Show($"Error while copying the file: {ex.Message}");
+            }
+        }
     }
+
+}
 }
