@@ -36,7 +36,7 @@ namespace RPA_Slayer
         public IDesignerDebugView DebuggerService;
 
         public const String DefultWorkflowFilePath = @"..\..\DefaultWorkflows\defaultWorkflow.xaml";
-        public string WorkflowFilePath = DefultWorkflowFilePath;
+        public  string WorkflowFilePath = DefultWorkflowFilePath;
 
         TextBox logsTxtbox;
 
@@ -93,7 +93,7 @@ namespace RPA_Slayer
 
 
         }
-        public string CutStringAtLastBackslash(string input)
+        public  string CutStringAtLastBackslash(string input)
         {
             int lastBackslashIndex = input.LastIndexOf('\\');
             if (lastBackslashIndex >= 0)
@@ -106,34 +106,22 @@ namespace RPA_Slayer
             }
         }
 
-        // var folderPath = CutStringAtLastBackslash(DefultWorkflowFilePath);
+       // var folderPath = CutStringAtLastBackslash(DefultWorkflowFilePath);
         //string folderPath = CutStringAtLastBackslash(wfDesigner.WorkflowFilePath);
-
+        
         private ToolboxControl GetToolboxControl()
         {
 
             // Load assemblies
-            string directoryPath = @"..\..\Activities\Assemblies"; // Specify the directory path where the assemblies are located
+            AppDomain.CurrentDomain.Load("IO-Modules");
+            AppDomain.CurrentDomain.Load("Processes Control");
+            AppDomain.CurrentDomain.Load("Browser-Engine");
+            AppDomain.CurrentDomain.Load("UI_Automation");
+            AppDomain.CurrentDomain.Load("Shortcuts");
 
-            string[] assemblyFiles = Directory.GetFiles(directoryPath, "*.dll"); // Retrieve all DLL files in the directory
 
-            foreach (string assemblyFile in assemblyFiles)
-            {
-                try
-                {
-                    AssemblyName assemblyName = AssemblyName.GetAssemblyName(assemblyFile); // Get the AssemblyName from the assembly file
 
-                    AppDomain.CurrentDomain.Load(assemblyName); // Load the assembly into the current application domain
 
-                    // Optionally, you can perform further processing with the loaded assembly if needed
-                }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions that occur during the assembly loading process
-                    Console.WriteLine($"Error loading assembly '{assemblyFile}': {ex.Message}");
-                }
-            }
-  
 
             var toolboxControl = new ToolboxControl();
             var appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
@@ -706,7 +694,7 @@ namespace RPA_Slayer
             {
                 _continue();
             }
-
+            
         }
 
 
