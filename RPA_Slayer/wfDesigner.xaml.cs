@@ -111,12 +111,15 @@ namespace RPA_Slayer
         
         private ToolboxControl GetToolboxControl()
         {
+
             // Load assemblies
             AppDomain.CurrentDomain.Load("IO-Modules");
             AppDomain.CurrentDomain.Load("Processes Control");
             AppDomain.CurrentDomain.Load("Browser-Engine");
-            AppDomain.CurrentDomain.Load("Excel");
             AppDomain.CurrentDomain.Load("UI_Automation");
+            AppDomain.CurrentDomain.Load("Shortcuts");
+
+
 
 
 

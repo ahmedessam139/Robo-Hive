@@ -8,7 +8,7 @@
         mc:Ignorable="d"
                  
         
-        Title="RPA Slayer" Height="700" Width="900" WindowState="Maximized"
+        Title="ROBO-HIVE"  WindowState="Maximized"
          Icon="/Logo_icon.ico">
 
     <Grid x:Name="LayoutRoot">

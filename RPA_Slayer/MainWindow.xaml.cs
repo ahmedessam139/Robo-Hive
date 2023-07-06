@@ -190,7 +190,7 @@ namespace RPA_Slayer
                 //orchestratorCommunications orc = new orchestratorCommunications();
                 //orc.ShowForm(wfDesigner.WorkflowFilePath);
 
-                Orc_Config orc = new Orc_Config("dksk");
+                Orc_Config orc = new Orc_Config(wfDesigner.WorkflowFilePath);
                 orc.Show();
 
             }

@@ -12,7 +12,7 @@ namespace RPA_Slayer
 {
     public partial class LoginWindow : Window
     {
-        private const string ServerUrl = "http://localhost:3000";
+        private const string ServerUrl = "http://localhost:4000";
         private const string TokenFilePath = "tokens.json";
 
         public LoginWindow()

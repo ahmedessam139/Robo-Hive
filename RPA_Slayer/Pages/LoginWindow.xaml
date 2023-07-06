@@ -1,7 +1,7 @@
 ﻿<Window x:Class="RPA_Slayer.LoginWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  Title="Login-RPA Slayer" Height="500" Width="800"
+  Title="Login - ROBO-HIVE" Height="500" Width="800"
   Background="#FF1F1F1F" WindowStartupLocation="CenterScreen"
  Icon="/Pages/Logo_icon.ico">
 

@@ -19,16 +19,13 @@
         <TextBlock Text="Package Name:" Grid.Row="0" Margin="20" />
         <TextBox x:Name="nameTextBox" Grid.Row="0" Margin="200,0,20,10" />
 
-        <TextBlock Text="Date:" Grid.Row="1" Margin="20" />
-        <DatePicker x:Name="datePicker" Grid.Row="1" Margin="200,0,20,10" />
-
-        <TextBlock Text="Time:" Grid.Row="2" Margin="20" />
-        <mah:TimePicker x:Name="timePicker" Grid.Row="2" Margin="200,0,20,10" />
+        <TextBlock Text="Description:" Grid.Row="1" Margin="20" />
+        <TextBox x:Name="descriptionTextBox" Grid.Row="1" Margin="200,0,20,10" />
 
         <Button Content="Select Another XAML File" Grid.Row="3" Margin="213,20,204,20" />
-        <TextBlock x:Name="xamlLabel" Text="TestBath" Grid.Row="3" Margin="20,25,0,0" />
+        <TextBlock x:Name="xamlLabel" Text="Xaml Bath" Grid.Row="2" Margin="20,25,0,0" />
 
-        <Button Content="Send" Grid.Row="4" Margin="224,20,220,20" />
+        <Button Content="Send" Grid.Row="4" Margin="224,20,220,20" Click="SendButton_Click" />
 
     </Grid>
 </mah:MetroWindow>
