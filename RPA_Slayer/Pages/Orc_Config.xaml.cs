@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,12 +16,14 @@ namespace RPA_Slayer.Pages
     public partial class Orc_Config : MetroWindow
     {
         public string Path { get; set; }
+        public string tokensPath { get; set; }
 
-        public Orc_Config(string path)
+    public Orc_Config(string path)
         {
             InitializeComponent();
             Path = path;
             xamlLabel.Text = Path;
+            tokensPath = "tokens.json";
         }
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
@@ -45,11 +48,22 @@ namespace RPA_Slayer.Pages
             try
             {
                 Console.WriteLine("Sending data to server...");
+
+                // Read the tokens JSON file
+                string tokensJson = File.ReadAllText(tokensPath);
+
+                // Parse the JSON to retrieve the access token
+                var tokensData = JsonConvert.DeserializeObject<dynamic>(tokensJson);
+                string bearerToken = tokensData.AccessToken;
+
                 // Create a HttpClient instance
                 using (HttpClient client = new HttpClient())
                 {
                     // Set the base address of the server
                     client.BaseAddress = new Uri("http://localhost:4000");
+
+                    // Add bearer token to the HttpClient headers
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
 
                     // Create the HttpContent with JSON data
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -61,6 +75,8 @@ namespace RPA_Slayer.Pages
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Data sent successfully!");
+                        this.Close();
+
                     }
                     else
                     {
@@ -74,6 +90,8 @@ namespace RPA_Slayer.Pages
             }
         }
 
-      
+
+
+
     }
 }

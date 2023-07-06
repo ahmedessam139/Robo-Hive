@@ -6,7 +6,9 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:RPA_Slayer.Pages"
         mc:Ignorable="d"
-        Title="Orc_Config" Height="350" Width="598">
+        Title="Orc_Config" Height="350" Width="598"
+        Icon="/Logo_icon.ico">
+    
     <Grid Margin="10,10,0,4">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
