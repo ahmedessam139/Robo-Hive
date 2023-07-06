@@ -202,6 +202,19 @@ namespace RPA_Slayer
 
 
         }
+        private void sendToCloud_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CloudActivities ca = new CloudActivities();
+                ca.Show();
+            }
+            catch(Exception ex)
+            {
+                 System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
 
         recording rec = new recording();
         private void start_Recording(object sender, RoutedEventArgs e)

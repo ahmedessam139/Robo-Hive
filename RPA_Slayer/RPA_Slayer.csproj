@@ -233,14 +233,14 @@
     <Compile Include="Helpers\orchestratorCommunications.cs" />
     <Compile Include="Helpers\recording.cs" />
     <Compile Include="Helpers\SimulatorTrackingParticipant.cs" />
+    <Compile Include="Pages\CloudActivities.xaml.cs">
+      <DependentUpon>CloudActivities.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Orc_Config.xaml.cs">
       <DependentUpon>Orc_Config.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\CloudActivities.xaml.cs">
-      <DependentUpon>CloudActivities.xaml</DependentUpon>
     </Compile>
     <Compile Include="wfDesigner.xaml.cs">
       <DependentUpon>wfDesigner.xaml</DependentUpon>
@@ -257,15 +257,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CloudActivities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Orc_Config.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\CloudActivities.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

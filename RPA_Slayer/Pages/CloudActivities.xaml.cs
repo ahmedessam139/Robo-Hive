@@ -1,27 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using MahApps.Metro.Controls;
+using Newtonsoft.Json;
 
 namespace RPA_Slayer.Pages
 {
-    /// <summary>
-    /// Interaction logic for CloudActivities.xaml
-    /// </summary>
-    public partial class CloudActivities : Window
+    public partial class CloudActivities : MetroWindow
     {
         public CloudActivities()
         {
             InitializeComponent();
+            LoadPackages();
         }
+
+        private void LoadPackages()
+        {
+            string json = @"
+            {
+              ""objects"": [
+                {
+                  ""name"": ""Object 1"",
+                  ""version"": ""1.0"",
+                  ""link"": ""https://example.com/object1"",
+                  ""description"": ""This is the first object.""
+                },
+                {
+                  ""name"": ""Object 2"",
+                  ""version"": ""2.3"",
+                  ""link"": ""https://example.com/object2"",
+                  ""description"": ""This is the second object.""
+                },
+                {
+                  ""name"": ""Object 3"",
+                  ""version"": ""4.5"",
+                  ""link"": ""https://example.com/object3"",
+                  ""description"": ""This is the third object.""
+                }
+              ]
+            }";
+
+            var jsonObject = JsonConvert.DeserializeObject<RootObject>(json);
+
+            // Set the DataContext for data binding
+            DataContext = jsonObject.objects;
+        }
+    }
+
+    public class Package
+    {
+        public string Name { get; set; }
+        public string Version { get; set; }
+        public string Link { get; set; }
+        public string Description { get; set; }
+    }
+
+    public class RootObject
+    {
+        public Package[] objects { get; set; }
     }
 }

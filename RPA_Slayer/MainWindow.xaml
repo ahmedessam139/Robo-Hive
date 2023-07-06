@@ -203,7 +203,7 @@
             </TabItem>
             <TabItem Header="Activities Management" mah:HeaderedControlHelper.HeaderFontSize="15" Margin="10,0,-11,0" >
                 <StackPanel Orientation="Horizontal" Margin="0,0,-3,0">
-                    <Button x:Name="addLibrary" Height="35" Width="120" Background="#FF73D979">
+                    <Button x:Name="addLibrary" Height="35" Width="120" Background="#FF73D979" Click="sendToCloud_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
