@@ -133,11 +133,7 @@ namespace RPA_Slayer
                     Console.WriteLine($"Error loading assembly '{assemblyFile}': {ex.Message}");
                 }
             }
-            AppDomain.CurrentDomain.Load("IO-Modules");
-            AppDomain.CurrentDomain.Load("Processes Control");
-            AppDomain.CurrentDomain.Load("Browser-Engine");
-            AppDomain.CurrentDomain.Load("UI_Automation");
-            AppDomain.CurrentDomain.Load("Shortcuts");
+        
 
 
 
