@@ -27,6 +27,7 @@ using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.Contracts;
+using System.Windows.Media;
 
 namespace RPA_Slayer
 {
@@ -40,6 +41,7 @@ namespace RPA_Slayer
         public  string WorkflowFilePath = DefultWorkflowFilePath;
 
         TextBox logsTxtbox;
+        TextBox outputTxtbox;
 
         Dictionary<int, SourceLocation> textLineToSourceLocationMap;
         Dictionary<object, SourceLocation> designerSourceLocationMapping = new Dictionary<object, SourceLocation>();
@@ -57,6 +59,7 @@ namespace RPA_Slayer
             this.AddWorkflowDesigner();
             this.AddToolBox();
             this.AddTrackingTextbox();
+            this.AddOutputTextbox();
         }
 
         private void RegisterMetadata()
@@ -423,9 +426,10 @@ namespace RPA_Slayer
             WorkflowDesigner.Flush();
             SaveWorkflow();
             logsTxtbox.Text = String.Empty;
+            outputTxtbox.Text = String.Empty;
             AddWorkflowDesigner();
             wfElementToSourceLocationMap = UpdateSourceLocationMappingInDebuggerService();
-
+            this.logsName.Focus();
 
             WorkflowInvoker instance = new WorkflowInvoker(GetRuntimeExecutionRoot());
             resumeRuntimeFromHost = new AutoResetEvent(false);
@@ -482,6 +486,7 @@ namespace RPA_Slayer
                         String.Format("<+=+=+=+> Activity Tracking Record Received for ActivityId: {0}, record: {1} ",
                         trackingEventArgs.Activity.Id,
                         trackingEventArgs.Record
+                        
                         )
                     );
 
@@ -496,10 +501,28 @@ namespace RPA_Slayer
                         logsTxtbox.AppendText("Level: " + ((ActivityStateRecord)trackingEventArgs.Record).Level + "\n");
                         logsTxtbox.AppendText("Time: " + ((ActivityStateRecord)trackingEventArgs.Record).EventTime + "\n");
                         logsTxtbox.AppendText("************************\n");
+                        //if activity is write line  "add output:{content}" to logsTxtbox
+                        if (trackingEventArgs.Activity is System.Activities.Statements.WriteLine &&
+               ((ActivityStateRecord)trackingEventArgs.Record).State == ActivityStates.Executing)
+                        {
+                            var writeLineActivity = (System.Activities.Statements.WriteLine)trackingEventArgs.Activity;
+                            var outputContent = writeLineActivity.Text;
 
+                            // Check if the output content is an InArgument
+                            if (outputContent is System.Activities.InArgument<string> inArgument)
+                            {
+                                var expression = inArgument.Expression;
+                                var value = WorkflowInvoker.Invoke(expression);
 
+                                outputTxtbox.AppendText(((ActivityStateRecord)trackingEventArgs.Record).EventTime+": "  + value + "\n");
+                            }
+                            else
+                            {
+                                outputTxtbox.AppendText("Output: " + outputContent + "\n");
+                            }
+                        }
                         //Add a sleep so that the debug adornments are visible to the user
-                        System.Threading.Thread.Sleep(500);
+                        System.Threading.Thread.Sleep(250);
                     }));
                 }
             };
@@ -672,9 +695,32 @@ namespace RPA_Slayer
         }
         void AddTrackingTextbox()
         {
-            logsTxtbox = new TextBox();
+            logsTxtbox = new TextBox
+            {
+                IsReadOnly = true,
+                Foreground = Brushes.Gray,
+                BorderThickness = new Thickness(0.3)
+
+
+            };
+            ;
             Grid.SetRow(logsTxtbox, 1);
             this.TrackingRecord.Children.Add(logsTxtbox);
+        }
+
+        void AddOutputTextbox()
+        {
+            outputTxtbox = new TextBox
+            {
+                IsReadOnly = true,
+                Foreground = Brushes.Gray,
+                BorderThickness = new Thickness(0.3)
+
+
+            };
+            ;
+            Grid.SetRow(outputTxtbox, 1);
+            this.output.Children.Add(outputTxtbox);
         }
 
         #endregion
