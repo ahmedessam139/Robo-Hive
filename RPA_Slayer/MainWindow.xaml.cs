@@ -214,6 +214,7 @@ namespace RPA_Slayer
             {
                 CloudActivities ca = new CloudActivities();
                 ca.Show();
+                /////////////////////////////////////////////////////////////////////
             }
             catch(Exception ex)
             {
@@ -349,7 +350,10 @@ private void addCustomLibrary_Click(object sender, RoutedEventArgs e)
                 // Copy the selected file to the target directory
                 File.Copy(selectedFilePath, destinationFilePath);
 
-                    System.Windows.MessageBox.Show("DLL file copied successfully!");
+                    System.Windows.MessageBox.Show("Library Added successfully!");
+                    wfDesigner.RemoveToolBox();
+                    wfDesigner.AddToolBox();
+
             }
             catch (IOException ex)
             {

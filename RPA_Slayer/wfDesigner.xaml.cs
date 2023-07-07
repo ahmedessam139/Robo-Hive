@@ -26,6 +26,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
+using System.Diagnostics.Contracts;
 
 namespace RPA_Slayer
 {
@@ -197,10 +198,14 @@ namespace RPA_Slayer
             return toolboxControl;
         }
 
-        private void AddToolBox()
+        public void AddToolBox()
         {
             ToolboxControl tc = GetToolboxControl();
             this.toolboxPanel.Content = tc;
+        }
+        public void RemoveToolBox()
+        {
+            this.toolboxPanel.Content = null;
         }
         private void AddPropertyInspector()
         {
@@ -209,6 +214,7 @@ namespace RPA_Slayer
 
             this.WorkflowPropertyPanel.Content = this.WorkflowDesigner.PropertyInspectorView;
         }
+        
 
         private void SetupFileExplorer()
         {
