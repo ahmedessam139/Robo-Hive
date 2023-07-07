@@ -54,7 +54,7 @@ namespace RPA_Slayer.Pages
 
                 // Parse the JSON to retrieve the access token
                 var tokensData = JsonConvert.DeserializeObject<dynamic>(tokensJson);
-                string bearerToken = tokensData.AccessToken;
+                string bearerToken = tokensData.access_token;
 
                 // Create a HttpClient instance
                 using (HttpClient client = new HttpClient())

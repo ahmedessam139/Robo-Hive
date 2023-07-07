@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
 using Newtonsoft.Json;
 
 namespace RPA_Slayer
 {
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : MetroWindow
     {
-        private const string ServerUrl = "http://localhost:4000";
+        private const string ServerUrl = "http://34.155.103.216.nip.io:8080";
         private const string TokenFilePath = "tokens.json";
+        private const string KC_CLIENT_ID = "register";
+        private const string KC_CLIENT_SECRET = "Gc6mjXoPJPuUZ5LQci1Daczcsnnnng5U";
 
         public LoginWindow()
         {
@@ -25,7 +30,10 @@ namespace RPA_Slayer
         {
             var payload = new Dictionary<string, string>
             {
-                { "email", usernameTextBox.Text },
+                { "grant_type", "password" },
+                { "client_id", KC_CLIENT_ID },
+                { "client_secret", KC_CLIENT_SECRET },
+                { "username", usernameTextBox.Text },
                 { "password", passwordBox.Password }
             };
 
@@ -33,13 +41,18 @@ namespace RPA_Slayer
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var jsonPayload = JsonConvert.SerializeObject(payload);
-                    var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-                    var response = await client.PostAsync($"{ServerUrl}/auth/login", content);
+                    var content = new FormUrlEncodedContent(payload);
+
+
+                    var response = await client.PostAsync($"{ServerUrl}/realms/orch/protocol/openid-connect/token", content);
+                    Console.WriteLine("Success");
+                    Console.WriteLine(response.Content.ReadAsStringAsync());
+                    Thread.Sleep(5000);
 
                     if (response.IsSuccessStatusCode)
                     {
+                        
                         var responseContent = await response.Content.ReadAsStringAsync();
                         var tokenData = JsonConvert.DeserializeObject<TokenData>(responseContent);
                         SaveTokens(tokenData);
@@ -63,12 +76,12 @@ namespace RPA_Slayer
             {
                 ClearPassword();
             }
-        } 
+        }
 
         private void CheckTokenAndNavigate()
         {
             var tokenData = RetrieveTokens();
-            if (tokenData != null && ValidateTokens(tokenData))
+            if (tokenData != null)
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -85,8 +98,8 @@ namespace RPA_Slayer
         {
             var payload = new Dictionary<string, string>
             {
-                { "accessToken", tokenData.AccessToken },
-                { "refreshToken", tokenData.RefreshToken }
+                { "accessToken", tokenData.access_token },
+                { "refreshToken", tokenData.access_token }
                 
             };
 
@@ -111,7 +124,6 @@ namespace RPA_Slayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Token validation failed: " + ex.Message);
                 return false;
             }
         }
@@ -167,9 +179,8 @@ namespace RPA_Slayer
 
     public class TokenData
     {
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
+        public string access_token { get; set; }
+        public string refresh_token { get; set; }
 
-        public string name { get; set; }
     }
 }
