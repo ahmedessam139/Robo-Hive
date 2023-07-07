@@ -18,7 +18,7 @@ namespace RPA_Slayer.Pages
         public string Path { get; set; }
         public string tokensPath { get; set; }
 
-    public Orc_Config(string path)
+        public Orc_Config(string path)
         {
             InitializeComponent();
             Path = path;
@@ -32,8 +32,8 @@ namespace RPA_Slayer.Pages
             var data = new
             {
                 packageName = nameTextBox.Text,
-                packageDescription = descriptionTextBox.Text,
-                xamlFile = File.ReadAllText(Path)
+                description = descriptionTextBox.Text,
+                xamlFile = Convert.ToBase64String(File.ReadAllBytes(Path)),
             };
 
             // Convert the data to JSON
@@ -60,7 +60,7 @@ namespace RPA_Slayer.Pages
                 using (HttpClient client = new HttpClient())
                 {
                     // Set the base address of the server
-                    client.BaseAddress = new Uri("http://localhost:4000");
+                    client.BaseAddress = new Uri("http://34.155.103.216");
 
                     // Add bearer token to the HttpClient headers
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
@@ -69,7 +69,7 @@ namespace RPA_Slayer.Pages
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     // Send the POST request
-                    HttpResponseMessage response = await client.PostAsync("/post", content);
+                    HttpResponseMessage response = await client.PostAsync("/api/packages/create/", content);
 
                     // Check if the request was successful
                     if (response.IsSuccessStatusCode)
