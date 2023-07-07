@@ -69,8 +69,14 @@ namespace RPA_Slayer
         public void AddWorkflowDesigner()
         {
             this.WorkflowDesigner = new WorkflowDesigner();
-            this.DebuggerService = this.WorkflowDesigner.DebugManagerView;
 
+            this.WorkflowDesigner.Context.Services.GetService<DesignerConfigurationService>().AutoConnectEnabled = true;
+
+            this.WorkflowDesigner.Context.Services.GetService<DesignerConfigurationService>().PanModeEnabled = true;
+            this.WorkflowDesigner.Context.Services.GetService<DesignerConfigurationService>().MultipleItemsDragDropEnabled = true;
+            this.WorkflowDesigner.Context.Services.GetService<DesignerConfigurationService>().LoadingFromUntrustedSourceEnabled = true;
+            this.WorkflowDesigner.Context.Services.GetService<DesignerConfigurationService>().TargetFrameworkName = new System.Runtime.Versioning.FrameworkName(".NETFramework", new Version(4, 5));
+            this.DebuggerService = this.WorkflowDesigner.DebugManagerView; 
             if (!string.IsNullOrEmpty(WorkflowFilePath))
             {
 
@@ -94,6 +100,7 @@ namespace RPA_Slayer
 
 
             //Updating the mapping between Model item and Source Location as soon as you load the designer so that BP setting can re-use that information from the DesignerSourceLocationMapping.
+            wfElementToSourceLocationMap = UpdateSourceLocationMappingInDebuggerService();
 
 
         }
@@ -168,14 +175,12 @@ namespace RPA_Slayer
                             || activityType.IsSubclassOf(typeof(ActivityWithResult))
                             || activityType.IsSubclassOf(typeof(AsyncCodeActivity))
                             || activityType.IsSubclassOf(typeof(CodeActivity))
-                            || activityType == typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<Type>)
                             || activityType == typeof(System.Activities.Statements.FlowNode)
                             || activityType == typeof(System.Activities.Statements.State)
                             || activityType == typeof(System.Activities.Core.Presentation.FinalState)
                             || activityType == typeof(System.Activities.Statements.FlowDecision)
                             || activityType == typeof(System.Activities.Statements.FlowStep)
                             || activityType == typeof(System.Activities.Statements.FlowSwitch<Type>)
-                            || activityType == typeof(System.Activities.Statements.ForEach<Type>)
                             || activityType == typeof(System.Activities.Statements.Switch<Type>)
                             || activityType == typeof(System.Activities.Statements.TryCatch)
                             || activityType == typeof(System.Activities.Statements.While)))
@@ -428,7 +433,6 @@ namespace RPA_Slayer
             logsTxtbox.Text = String.Empty;
             outputTxtbox.Text = String.Empty;
             AddWorkflowDesigner();
-            wfElementToSourceLocationMap = UpdateSourceLocationMappingInDebuggerService();
             this.logsName.Focus();
 
             WorkflowInvoker instance = new WorkflowInvoker(GetRuntimeExecutionRoot());
@@ -706,6 +710,8 @@ namespace RPA_Slayer
             ;
             Grid.SetRow(logsTxtbox, 1);
             this.TrackingRecord.Children.Add(logsTxtbox);
+            
+            textLineToSourceLocationMap = new Dictionary<int, SourceLocation>();
         }
 
         void AddOutputTextbox()
@@ -730,8 +736,11 @@ namespace RPA_Slayer
 
         public void BreakPointToggle()
         {
+
             ModelItem mi = this.WorkflowDesigner.Context.Items.GetValue<Selection>().PrimarySelection;
             Activity a = mi.GetCurrentValue() as Activity;
+            Console.WriteLine(a);
+            
 
             if (a != null)
             {

@@ -110,7 +110,7 @@
                         <Image Source="/Images/stop-button.png" Height="35" Width="45" />
 
                     </Button>
-                    <Button x:Name="DBreakpointButton" Height="35" Width="50" Background="Transparent" BorderThickness="0">
+                    <Button x:Name="DBreakpointButton" Height="35" Width="50" Background="Transparent" BorderThickness="0" Click="btnBreakpointToggle_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -120,7 +120,7 @@
                         <Image Source="/Images/pin.png" Height="35" Width="45" />
 
                     </Button>
-                    <Button x:Name="DContinueButton" Height="35" Width="50" Background="Transparent" BorderThickness="0">
+                    <Button x:Name="DContinueButton" Height="35" Width="50" Background="Transparent" BorderThickness="0" Click="btnContinue_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />

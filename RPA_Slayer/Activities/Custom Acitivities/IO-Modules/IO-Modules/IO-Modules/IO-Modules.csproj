@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyBoardKeys.cs" />
+    <Compile Include="Keyboard_Listening.cs" />
     <Compile Include="MouseControl.cs" />
     <Compile Include="DisplayMsgBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

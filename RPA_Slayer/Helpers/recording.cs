@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Automation;
@@ -240,7 +240,7 @@ namespace RPA_Slayer.Helpers
             // Append the new lines at the desired index
             //lines.InsertRange(insertionIndex, new[] { " xmlns:u=\"clr-namespace:UI_Automation;assembly=UI_Automation\"", " xmlns:i=\"clr-namespace:IO_Modules;assembly=IO-Modules\"" });
             
-            int insertionIndex1 = Math.Max(0, lines.Count - 2);
+            int insertionIndex1 = Math.Max(0, lines.Count - 17);
             // Insert the elements before the line at the insertion index
             lines[insertionIndex1] = string.Join("" + Environment.NewLine, _elementNames) + Environment.NewLine + lines[insertionIndex1];
             // Remove all elements (_elementNames)

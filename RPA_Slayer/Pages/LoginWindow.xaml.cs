@@ -3,9 +3,11 @@ using System.Activities.Statements;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
@@ -169,10 +171,13 @@ namespace RPA_Slayer
 
         private void forgetPassword_click(object sender, RoutedEventArgs e)
         {
+            
 
         }
         private void signUp_click(object sender, RoutedEventArgs e)
         {
+            HttpContext.Current.Response.Redirect("http://34.155.103.216.nip.io:8080/realms/orch/login-actions/registration?client_id=orch&tab_id=odPdEq7K_cY");
+
 
         }
     }
