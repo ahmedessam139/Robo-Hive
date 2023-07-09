@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows;
-using Newtonsoft.Json;
+using System.Windows.Controls;
+using RPA_Slayer;
 
 namespace RPA_Slayer.Pages
 {
     public partial class CloudActivities : MahApps.Metro.Controls.MetroWindow
     {
+        
         public CloudActivities()
         {
             InitializeComponent();
@@ -40,6 +44,30 @@ namespace RPA_Slayer.Pages
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+
+        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            string downloadLink = button.Tag.ToString();
+
+            try
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    string downloadLocation = @"..\..\Activities\Assemblies"; // Specify your desired download location here
+                    string fileName = Path.GetFileName(downloadLink);
+                    string filePath = Path.Combine(downloadLocation, fileName);
+
+                    webClient.DownloadFile(downloadLink, filePath);
+
+                    MessageBox.Show($"File downloaded successfully to: {filePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while downloading: " + ex.Message);
+            }
+        }
     }
 
     public class Package
@@ -47,5 +75,6 @@ namespace RPA_Slayer.Pages
         public string Name { get; set; }
         public string Version { get; set; }
         public string Description { get; set; }
+        public string Link { get; set; }
     }
 }
