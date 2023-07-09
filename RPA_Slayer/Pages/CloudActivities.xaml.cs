@@ -1,47 +1,44 @@
-﻿using System.Windows;
-using MahApps.Metro.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows;
 using Newtonsoft.Json;
 
 namespace RPA_Slayer.Pages
 {
-    public partial class CloudActivities : MetroWindow
+    public partial class CloudActivities : MahApps.Metro.Controls.MetroWindow
     {
         public CloudActivities()
         {
             InitializeComponent();
-            LoadPackages();
+            LoadPackagesAsync();
         }
 
-        private void LoadPackages()
+        private async void LoadPackagesAsync()
         {
-            string json = @"
+            try
             {
-              ""objects"": [
+                // JSON URL endpoint
+                string url = "https://my-json-server.typicode.com/shehata1999/json/packages";
+
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
                 {
-                  ""name"": ""Object 1"",
-                  ""version"": ""1.0"",
-                  ""link"": ""https://example.com/object1"",
-                  ""description"": ""This is the first object.""
-                },
-                {
-                  ""name"": ""Object 2"",
-                  ""version"": ""2.3"",
-                  ""link"": ""https://example.com/object2"",
-                  ""description"": ""This is the second object.""
-                },
-                {
-                  ""name"": ""Object 3"",
-                  ""version"": ""4.5"",
-                  ""link"": ""https://example.com/object3"",
-                  ""description"": ""This is the third object.""
+                    string json = await response.Content.ReadAsStringAsync();
+                    List<Package> packages = JsonConvert.DeserializeObject<List<Package>>(json);
+                    DataContext = packages;
                 }
-              ]
-            }";
-
-            var jsonObject = JsonConvert.DeserializeObject<RootObject>(json);
-
-            // Set the DataContext for data binding
-            DataContext = jsonObject.objects;
+                else
+                {
+                    MessageBox.Show("Failed to load packages. Please try again later.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
     }
 
@@ -49,12 +46,6 @@ namespace RPA_Slayer.Pages
     {
         public string Name { get; set; }
         public string Version { get; set; }
-        public string Link { get; set; }
         public string Description { get; set; }
-    }
-
-    public class RootObject
-    {
-        public Package[] objects { get; set; }
     }
 }
