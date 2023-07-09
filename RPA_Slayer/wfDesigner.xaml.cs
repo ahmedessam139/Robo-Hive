@@ -28,6 +28,7 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Diagnostics.Contracts;
 using System.Windows.Media;
+using static System.Activities.Presentation.WorkflowDesignerIcons;
 
 namespace RPA_Slayer
 {
@@ -120,9 +121,13 @@ namespace RPA_Slayer
 
 
         private List<string> loadedAssemblyFiles = new List<string>();
+     
 
-        private ToolboxControl GetToolboxControl()
+
+
+    private ToolboxControl GetToolboxControl()
         {
+
             Console.WriteLine("loadedAss:");
             Console.WriteLine(string.Join(Environment.NewLine, loadedAssemblyFiles));
 
@@ -139,12 +144,34 @@ namespace RPA_Slayer
 
                     File.Copy(assemblyFile, targetFilePath, true);
 
+                    string logFilePath = @"..\..\DeletedItems.txt"; // Replace with the actual path of the log file
+
+                    try
+                    {
+                        // Read all lines from the log file
+                        string[] lines = File.ReadAllLines(logFilePath);
+
+                        // Iterate over each line and combine it with a path, then add it to the loadedAssemblyFiles list
+                        foreach (string line in lines)
+                        {
+                            string path = Path.Combine(@"..\..\Activities\Assemblies", line); // Replace directoryPath1 with the desired directory path
+                            loadedAssemblyFiles.Add(path);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error reading log file: " + ex.Message);
+                    }
+
+
+
                     if (!loadedAssemblyFiles.Contains(assemblyFile))
                     {
                         loadedAssemblyFiles.Add(assemblyFile);
                         AssemblyName assemblyName = AssemblyName.GetAssemblyName(targetFilePath);
                         Assembly.LoadFrom(targetFilePath);
                     }
+                   
 
 
                     // Optionally, you can perform further processing with the loaded assembly if needed

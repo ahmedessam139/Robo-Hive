@@ -10,7 +10,25 @@
     Icon="/Logo_icon.ico">
 
     <Grid>
-        <ListView x:Name="fileListView" Margin="10" />
+        <ListView x:Name="fileListView" Margin="10" ItemsSource="{Binding}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+                        <Button Grid.Column="1" Content="Remove" Click="RemoveButton_Click" Tag="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 
 </mah:MetroWindow>

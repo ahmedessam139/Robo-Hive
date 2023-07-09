@@ -56,6 +56,7 @@ namespace RPA_Slayer.Pages
         {
             Button button = (Button)sender;
             string downloadLink = button.Tag.ToString();
+            string packageName = ((Package)button.DataContext).Name;
 
             try
             {
@@ -75,6 +76,21 @@ namespace RPA_Slayer.Pages
                     button.Content = "Installed";
 
                     MessageBox.Show($"File downloaded successfully to: {filePath}");
+
+                    // Search and remove package name from the text file
+                    string textFilePath = @"..\..\DeletedItems.txt"; // Specify the path to your text file
+                    string[] lines = File.ReadAllLines(textFilePath);
+                    List<string> updatedLines = new List<string>();
+
+                    foreach (string line in lines)
+                    {
+                        if (!line.Contains(packageName))
+                        {
+                            updatedLines.Add(line);
+                        }
+                    }
+
+                    File.WriteAllLines(textFilePath, updatedLines);
                 }
             }
             catch (Exception ex)
@@ -83,6 +99,7 @@ namespace RPA_Slayer.Pages
                 MessageBox.Show("An error occurred while downloading: " + ex.Message);
             }
         }
+
     }
 
     public class Package
