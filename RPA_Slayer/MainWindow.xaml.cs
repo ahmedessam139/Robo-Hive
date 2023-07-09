@@ -416,6 +416,20 @@ namespace RPA_Slayer
             }
 
         }
+
+        private void removeLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RemovePackage rp = new RemovePackage();
+                rp.Show();
+                /////////////////////////////////////////////////////////////////////
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 
        

@@ -263,7 +263,7 @@
                             <TextBlock Text="Add One" HorizontalAlignment="Center" />
                         </StackPanel>
                     </Button>
-                    <Button x:Name="removeLibrary" Height="63" Width="120" Background="#FF73D979">
+                    <Button x:Name="removeLibrary" Height="63" Width="120" Background="#FF73D979" Click="removeLibrary_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />

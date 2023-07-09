@@ -236,6 +236,9 @@
     <Compile Include="Pages\Orc_Config.xaml.cs">
       <DependentUpon>Orc_Config.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RemovePackage.xaml.cs">
+      <DependentUpon>RemovePackage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wfDesigner.xaml.cs">
       <DependentUpon>wfDesigner.xaml</DependentUpon>
     </Compile>
@@ -260,6 +263,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Orc_Config.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RemovePackage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
