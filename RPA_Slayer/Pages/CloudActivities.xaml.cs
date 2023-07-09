@@ -7,16 +7,21 @@ using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 using RPA_Slayer;
+using System.Activities.Presentation;
 
 namespace RPA_Slayer.Pages
 {
     public partial class CloudActivities : MahApps.Metro.Controls.MetroWindow
     {
-        
-        public CloudActivities()
+        private WorkflowDesigner wfDesigner;
+
+
+        public CloudActivities(WorkflowDesigner designer)
         {
             InitializeComponent();
             LoadPackagesAsync();
+            wfDesigner = designer;
+
         }
 
         private async void LoadPackagesAsync()
@@ -24,7 +29,7 @@ namespace RPA_Slayer.Pages
             try
             {
                 // JSON URL endpoint
-                string url = "https://my-json-server.typicode.com/shehata1999/json/packages";
+                string url = "http://localhost:3000/packages";
 
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -33,6 +38,8 @@ namespace RPA_Slayer.Pages
                     string json = await response.Content.ReadAsStringAsync();
                     List<Package> packages = JsonConvert.DeserializeObject<List<Package>>(json);
                     DataContext = packages;
+
+
                 }
                 else
                 {
@@ -45,7 +52,7 @@ namespace RPA_Slayer.Pages
             }
         }
 
-        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        private async void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             string downloadLink = button.Tag.ToString();
@@ -58,13 +65,21 @@ namespace RPA_Slayer.Pages
                     string fileName = Path.GetFileName(downloadLink);
                     string filePath = Path.Combine(downloadLocation, fileName);
 
-                    webClient.DownloadFile(downloadLink, filePath);
+                    // Change button content to "Installing"
+                    button.Content = "Installing";
+
+                    // Download the file asynchronously
+                    await webClient.DownloadFileTaskAsync(downloadLink, filePath);
+
+                    // Change button content to "Installed"
+                    button.Content = "Installed";
 
                     MessageBox.Show($"File downloaded successfully to: {filePath}");
                 }
             }
             catch (Exception ex)
             {
+                button.Content = "Error-install again";
                 MessageBox.Show("An error occurred while downloading: " + ex.Message);
             }
         }

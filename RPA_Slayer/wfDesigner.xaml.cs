@@ -493,9 +493,15 @@ namespace RPA_Slayer
                         
                         )
                     );
+                    try
+                    {
 
-                    ShowDebug(wfElementToSourceLocationMap[trackingEventArgs.Activity]);
-
+                        ShowDebug(wfElementToSourceLocationMap[trackingEventArgs.Activity]);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("eeee");
+                    }
                     this.Dispatcher.Invoke(DispatcherPriority.SystemIdle, (Action)(() =>
                     {
                         //Textbox Updates

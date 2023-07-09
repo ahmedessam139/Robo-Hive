@@ -10,225 +10,295 @@
         
         Title="ROBO-HIVE"  WindowState="Maximized"
          Icon="/Logo_icon.ico">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="85" />
+            <RowDefinition Height="Auto" MinHeight="108" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+        <TabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}" Background="White" >
             <TabControl.Resources>
                 <Style x:Key="MenuLevel2" TargetType="{x:Type TabItem}">
                     <Setter Property="FontSize" Value="10" />
 
                 </Style>
             </TabControl.Resources>
-
-
-
-            <TabItem Header="File    " mah:HeaderedControlHelper.HeaderFontSize="15" >
-                <TabItem.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TabItem.RenderTransform>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <Button x:Name="SaveExportButton" Height="35" Width="50" Background="#FFA9BFD9" Click="btnSaveWorkflow_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/save (1).png" Height="35" Width="45" />
-                    </Button>
-                    <Button x:Name="OpenButton" Height="35" Width="50" Background="#FFA9BFD9" Click="btnOpenWorkflow_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/open (1).png" Height="35" Width="45" />
-                    </Button>
-                    <Button x:Name="NewButton" Height="35" Width="50" Background="#FFA9BFD9" Click="btnNewWorkflow_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/new-document.png" Height="35" Width="45" />
-                    </Button>
-                </StackPanel>
-            </TabItem>
-
-
-
-            <TabItem Header="Run    " mah:HeaderedControlHelper.HeaderFontSize="15">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <Button x:Name="RunButton" Height="35" Width="50" Click="btnFastRunWorkflow_Click" Background="Transparent" BorderThickness="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/play.png" Height="35" Width="35" />
-                    </Button>
-
-                    <Button x:Name="StopButton"  Height="35" Width="50" Background="#FFCE9595" Click="btnStopWorkflow_Click" BorderThickness="0" Padding="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="Images/stop (1).png" Height="35" Width="45" />
-                    </Button>
-                </StackPanel>
-            </TabItem>
-
-
-
-
-            <TabItem Header="Debug    " mah:HeaderedControlHelper.HeaderFontSize="15">
-                <StackPanel Orientation="Horizontal" Height="43">
-                    <Button x:Name="DebugButton" Height="35" Width="50" Click="btnRunLoadedWorkflow_Click" Background="Transparent" BorderThickness="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/play.png" Height="35" Width="45" />
-                    </Button>
-                    <Button x:Name="DStopButton" Height="35" Width="50" Background="Transparent" BorderThickness="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/stop-button.png" Height="35" Width="45" />
-
-                    </Button>
-                    <Button x:Name="DBreakpointButton" Height="35" Width="50" Background="Transparent" BorderThickness="0" Click="btnBreakpointToggle_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-
-                        </Button.Template>
-                        <Image Source="/Images/pin.png" Height="35" Width="45" />
-
-                    </Button>
-                    <Button x:Name="DContinueButton" Height="35" Width="50" Background="Transparent" BorderThickness="0" Click="btnContinue_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="/Images/next-track.png" Height="35" Width="45" />
-
-                    </Button>
-                </StackPanel>
-            </TabItem>
-
-
-
-            <TabItem Header="Edit    " mah:HeaderedControlHelper.HeaderFontSize="15">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <Button Height="35" Width="50" Background="Transparent" BorderThickness="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="Images/undo.png" Height="35" Width="35" />
-                    </Button>
-                    <Button Height="35" Width="50" Background="Transparent" BorderThickness="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="Images/redo.png" Height="35" Width="35" />
-                    </Button>
-                </StackPanel>
-            </TabItem>
-
-
-
-
-            <TabItem Header="Orch    " mah:HeaderedControlHelper.HeaderFontSize="15">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <Button x:Name="sendToOrc" Height="35" Width="50" Background="#FF73D979" Click="sendToOrc_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="Images/upload.png" Height="45" Width="30" />
-                    </Button>
-                    <Button x:Name="connect" Height="35" Width="100" Background="#FF73D979">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Image Source="Images/linktoorch.png" Height="45" Width="45" />
-                    </Button>
-                </StackPanel>
-            </TabItem>
             
 
 
+
+            <TabItem Header="File    " mah:HeaderedControlHelper.HeaderFontSize="15">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Background="#FFF7F7F7">
+                    <Button x:Name="SaveExportButton" Height="59" Width="70" Background="#FFA9BFD9" Click="btnSaveWorkflow_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/save (1).png" Width="60" Height="37" />
+                            <TextBlock Text="Save" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="OpenButton" Height="59" Width="70" Background="#FFA9BFD9" Click="btnOpenWorkflow_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/open (1).png" Width="60" Height="37" />
+                            <TextBlock Text="Open" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="NewButton" Height="59" Width="70" Background="#FFA9BFD9" Click="btnNewWorkflow_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/new-document.png" Width="60" Height="37" />
+                            <TextBlock Text="New" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Run    " mah:HeaderedControlHelper.HeaderFontSize="15">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Background="#FFF7F7F7">
+                    <Button x:Name="RunButton" Height="59" Width="70" Click="btnFastRunWorkflow_Click" Background="Transparent" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/play.png" Width="60" Height="37" />
+                            <TextBlock Text="Run" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="StopButton" Height="59" Width="70" Background="#FFCE9595" Click="btnStopWorkflow_Click" BorderThickness="0" Padding="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/stop (1).png" Width="60" Height="37" />
+                            <TextBlock Text="Stop" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Debug    " mah:HeaderedControlHelper.HeaderFontSize="15">
+                <StackPanel Orientation="Horizontal" Margin="-8,0,0,0" Background="#FFF7F7F7">
+                    <Button x:Name="DebugButton" Height="59" Width="70" Click="btnRunLoadedWorkflow_Click" Background="Transparent" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/play.png" Width="60" Height="37" />
+                            <TextBlock Text="Debug" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="DStopButton" Height="59" Width="70" Background="Transparent" BorderThickness="0" Click="DStopButton_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/stop-button.png" Width="60" Height="37" />
+                            <TextBlock Text="Stop" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="DBreakpointButton" Height="59" Width="70" Background="Transparent" BorderThickness="0" Click="btnBreakpointToggle_Click">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/pin.png" Width="60" Height="37" />
+                            <TextBlock Text="Breakpoint" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="DContinueButton" Height="59" Width="70" Background="Transparent" BorderThickness="0" Click="btnContinue_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/next-track.png" Width="60" Height="37" />
+                            <TextBlock Text="Continue" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Edit    " mah:HeaderedControlHelper.HeaderFontSize="15">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Background="#FFF7F7F7">
+                    <Button Height="59" Width="50" Background="Transparent" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/undo.png" Width="52" Height="28" />
+                            <TextBlock Text="Undo" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button Height="59" Width="50" Background="Transparent" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/redo.png" Width="53" Height="31" />
+                            <TextBlock Text="Redo" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Orch    " mah:HeaderedControlHelper.HeaderFontSize="15">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Background="#FFF7F7F7">
+                    <Button x:Name="sendToOrc" Height="59" Width="90
+                            " Background="#FF73D979" Click="sendToOrc_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/cloud-computing.png" Width="61" Height="35" />
+                            <TextBlock Text="Send to Orch" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="connect" Height="59" Width="100" Background="#FF73D979">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/connect.png" Width="54" Height="34" />
+                            <TextBlock Text="Connect" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="logOut" Height="59" Width="100" Background="#FF73D979" Click="logOut_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/logout.png" Width="54" Height="34" />
+                            <TextBlock Text="LOG-OUT" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </TabItem>
+
             <TabItem Header="Record" mah:HeaderedControlHelper.HeaderFontSize="15">
-                <StackPanel Orientation="Horizontal" Margin="0,0,-3,0">
-                    <Button x:Name="startRecording" Height="35" Width="50" Background="#FFF96837" Click="start_Recording">
+                <StackPanel Orientation="Horizontal" Margin="0,0,-3,0" Background="#FFF7F7F7">
+                    <Button x:Name="startRecording" Height="59" Width="110" Background="#FFF96837" Click="start_Recording">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </ControlTemplate>
                         </Button.Template>
-                        <Image Source="/Images/monitor.png" Height="35" Width="45" />
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/monitor.png" Width="60" Height="37" />
+                            <TextBlock Text="Start Recording" HorizontalAlignment="Center" />
+                        </StackPanel>
                     </Button>
-                    <Button x:Name="StopRecording" Height="35" Width="86" Background="#FFF96837" Click="stop_Recording">
+                    <Button x:Name="StopRecording" Height="59" Width="110" Background="#FFF96837" Click="stop_Recording">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </ControlTemplate>
                         </Button.Template>
-                        <Image Source="Images/stop (1).png" Height="35" Width="45" />
-                    </Button>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Activities Management" mah:HeaderedControlHelper.HeaderFontSize="15" Margin="10,0,-11,0" >
-                <StackPanel Orientation="Horizontal" Margin="0,0,-3,0">
-                    <Button x:Name="addLibrary" Height="35" Width="120" Background="#FF73D979" Click="sendToCloud_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <TextBlock Text="Add Library" />
-                    </Button>
-                    <Button x:Name="removeLibrary" Height="35" Width="120" Background="#FF73D979">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <TextBlock Text="Remove Library" />
-                    </Button>
-                    <Button x:Name="addCustomLibrary" Height="35" Width="140" Background="#FF73D979" Click="addCustomLibrary_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </ControlTemplate>
-                        </Button.Template>
-                        <TextBlock Text="Add Custom Library" />
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/stop (1).png" Width="60" Height="37" />
+                            <TextBlock Text="Stop Recording" HorizontalAlignment="Center" />
+                        </StackPanel>
                     </Button>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Activities Management" mah:HeaderedControlHelper.HeaderFontSize="15" Margin="10,0,-11,0">
+                <StackPanel Orientation="Horizontal" Margin="0,0,-3,0" Background="#FFF7F7F7">
+                    <Button x:Name="addLibrary" Height="63" Width="131" Background="#FF73D979" Click="sendToCloud_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/plus.png" Width="60" Height="37" />
+                            <TextBlock Text="Add One" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="removeLibrary" Height="63" Width="120" Background="#FF73D979">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/rubbish-bin.png" Width="60" Height="37" />
+                            <TextBlock Text="Remove" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="addCustomLibrary" Height="63" Width="140" Background="#FF73D979" Click="addCustomLibrary_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/custom.png" Width="60" Height="37" />
+                            <TextBlock Text="Custom" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="Refresh" Height="63" Width="140" Background="#FF73D979" Click="refreshLib_btn">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                            <Image Source="/Images/refresh.png" Width="60" Height="37" />
+                            <TextBlock Text="Refresh" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+
 
         </TabControl>
 

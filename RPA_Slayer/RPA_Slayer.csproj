@@ -330,13 +330,11 @@
     <Resource Include="Images\new.png" />
     <Resource Include="Images\open.png" />
     <Resource Include="Images\record.png" />
-    <Resource Include="Images\redo.png" />
     <Resource Include="Images\run.png" />
     <Resource Include="Images\runindebugmode.png" />
     <Resource Include="Images\save.png" />
     <Resource Include="Images\settings.png" />
     <Resource Include="Images\stop.png" />
-    <Resource Include="Images\undo.png" />
     <Resource Include="Images\upload.png" />
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +359,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\main_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cloud-computing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rubbish-bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\custom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets" Condition="Exists('..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets')" />

@@ -25,6 +25,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using Path = System.IO.Path;
+using System.Activities.Presentation;
 
 
 
@@ -54,8 +55,8 @@ namespace RPA_Slayer
             SourceInitialized += MainWindow_SourceInitialized;
         }
 
-       
-        
+
+
 
         private void btnRunLoadedWorkflow_Click(object sender, RoutedEventArgs e)
         {
@@ -140,11 +141,11 @@ namespace RPA_Slayer
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -200,7 +201,7 @@ namespace RPA_Slayer
                 orc.Show();
 
             }
-            catch (Exception ex)    
+            catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -212,13 +213,13 @@ namespace RPA_Slayer
         {
             try
             {
-                CloudActivities ca = new CloudActivities();
+                CloudActivities ca = new CloudActivities(wfDesigner.WorkflowDesigner);
                 ca.Show();
                 /////////////////////////////////////////////////////////////////////
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                 System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -257,7 +258,7 @@ namespace RPA_Slayer
 
                 rec.StopRecord(wfDesigner.WorkflowFilePath);
                 wfDesigner.AddWorkflowDesigner();
-                
+
 
 
 
@@ -321,46 +322,101 @@ namespace RPA_Slayer
         #endregion
 
 
-private void addCustomLibrary_Click(object sender, RoutedEventArgs e)
-    {
-        // Create an instance of the OpenFileDialog
-        var openFileDialog = new Microsoft.Win32.OpenFileDialog();
-        openFileDialog.Filter = "DLL files (*.dll)|*.dll";
-        openFileDialog.Title = "Select a DLL file";
-
-        // Show the dialog and check if the user clicked "OK"
-        if (openFileDialog.ShowDialog() == true)
+        private void addCustomLibrary_Click(object sender, RoutedEventArgs e)
         {
-            string selectedFilePath = openFileDialog.FileName;
+            // Create an instance of the OpenFileDialog
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "DLL files (*.dll)|*.dll";
+            openFileDialog.Title = "Select a DLL file";
 
-            // Specify the target directory to copy the DLL file
-            string targetDirectory = @"..\..\Activities\Assemblies";
-
-            // Create the target directory if it doesn't exist
-            Directory.CreateDirectory(targetDirectory);
-
-            // Get the file name from the selected file path
-            string fileName = Path.GetFileName(selectedFilePath);
-
-            // Combine the target directory path with the file name
-            string destinationFilePath = Path.Combine(targetDirectory, fileName);
-
-            try
+            // Show the dialog and check if the user clicked "OK"
+            if (openFileDialog.ShowDialog() == true)
             {
-                // Copy the selected file to the target directory
-                File.Copy(selectedFilePath, destinationFilePath);
+                string selectedFilePath = openFileDialog.FileName;
+
+                // Specify the target directory to copy the DLL file
+                string targetDirectory = @"..\..\Activities\Assemblies";
+
+                // Create the target directory if it doesn't exist
+                Directory.CreateDirectory(targetDirectory);
+
+                // Get the file name from the selected file path
+                string fileName = Path.GetFileName(selectedFilePath);
+
+                // Combine the target directory path with the file name
+                string destinationFilePath = Path.Combine(targetDirectory, fileName);
+
+                try
+                {
+                    // Copy the selected file to the target directory
+                    File.Copy(selectedFilePath, destinationFilePath);
 
                     System.Windows.MessageBox.Show("Library Added successfully!");
                     wfDesigner.RemoveToolBox();
                     wfDesigner.AddToolBox();
 
+                }
+                catch (IOException ex)
+                {
+                    System.Windows.MessageBox.Show($"Error while copying the file: {ex.Message}");
+                }
+            }
+        }
+
+       
+
+        private void refreshLib_btn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                wfDesigner.RemoveToolBox();
+                wfDesigner.AddToolBox();
+
             }
             catch (IOException ex)
             {
-                    System.Windows.MessageBox.Show($"Error while copying the file: {ex.Message}");
+                System.Windows.MessageBox.Show($"Error while rendering toolbox : {ex.Message}");
             }
+
+        }
+
+        private void logOut_Click(object sender, RoutedEventArgs e)
+        {
+            string tokenFilePath =  "tokens.json";
+
+            // Delete the token.json file
+            if (File.Exists(tokenFilePath))
+            {
+            File.Delete(tokenFilePath);
+            }
+
+            // Restart the application
+            System.Diagnostics.Process.Start(System.Windows.Application.ResourceAssembly.Location);
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void DStopButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (wfDesigner.WorkflowFilePath == wfDesigner.DefultWorkflowFilePath)
+                {
+                    System.Windows.MessageBox.Show("Please load a workflow first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                wfDesigner.AddWorkflowDesigner();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 
-}
+       
 }
