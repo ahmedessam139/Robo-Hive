@@ -38,7 +38,7 @@ namespace RPA_Slayer
         public WorkflowDesigner WorkflowDesigner;
         public IDesignerDebugView DebuggerService;
 
-        public const String DefultWorkflowFilePath = @"..\..\DefaultWorkflows\defaultWorkflow.xaml";
+        public const String DefultWorkflowFilePath = @"defaultWorkflow.xaml";
         public  string WorkflowFilePath = DefultWorkflowFilePath;
 
         TextBox logsTxtbox;
@@ -89,7 +89,7 @@ namespace RPA_Slayer
 
             this.workflowDesignerPanel.Content = this.WorkflowDesigner.View;
             this.AddPropertyInspector();
-            if (WorkflowFilePath == @"..\..\DefaultWorkflows\defaultWorkflow.xaml")
+            if (WorkflowFilePath == @"defaultWorkflow.xaml")
             {
                 // Do nothing
             }
