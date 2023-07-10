@@ -213,7 +213,7 @@ namespace RPA_Slayer
         {
             try
             {
-                CloudActivities ca = new CloudActivities(wfDesigner.WorkflowDesigner);
+                CloudActivities ca = new CloudActivities();
                 ca.Show();
                 /////////////////////////////////////////////////////////////////////
             }

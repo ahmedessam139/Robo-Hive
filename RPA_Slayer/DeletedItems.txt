@@ -1,7 +1,3 @@
 Shortcuts.dll
 Types.dll
 
-Excel.dll
-Excel.dll
-Excel.dll
-Excel.dll

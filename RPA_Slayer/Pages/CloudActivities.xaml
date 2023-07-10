@@ -7,8 +7,75 @@
     xmlns:local="clr-namespace:RPA_Slayer.Pages"
     mc:Ignorable="d"
     Title="CloudActivities" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox" x:Key="SearchTextBoxStyle">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#B0B0B0" />
+            <Setter Property="Foreground" Value="#000000" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="MinWidth" Value="200" />
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border BorderThickness="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Images/search.png" Width="20" Height="20" Margin="5" />
+                                <ScrollViewer x:Name="PART_ContentHost" Grid.Column="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <ListView ItemsSource="{Binding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="searchTextBox" Grid.Column="0" Style="{StaticResource SearchTextBoxStyle}" Background="#FFF7F7F7" Padding="4,4,4,4" Margin="0,0,0,10" FontSize="18" />
+
+            <Button Grid.Column="1"  Margin="10,0,0,0" Click="SearchButton_Click" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ControlTemplate>
+                </Button.Template>
+                <StackPanel Height="61" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Images/find.png" Width="60" Height="48" />
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -18,10 +85,20 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                            <TextBlock Text="{Binding Version}" FontSize="14" Margin="0,2,0,0"/>
-                            <TextBlock Text="{Binding Description}" FontSize="14" Margin="0,2,0,0"/>
+                            <TextBlock Text="{Binding Version}" FontSize="14" Margin="0,2,0,0" Foreground="#FF888888"/>
+                            <TextBlock Text="{Binding Description}" FontSize="14" Margin="0,2,0,0" Foreground="#FF929292"/>
                         </StackPanel>
-                        <Button Grid.Column="1" Content="Download" Click="DownloadButton_Click" Tag="{Binding Link}" />
+                        <Button Grid.Column="1" Click="DownloadButton_Click" Tag="{Binding Link}" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel Height="61" Width="90" HorizontalAlignment="Center">
+                                <Image Source="/Images/download.png" Width="60" Height="37" />
+                                <TextBlock x:Name="txt" Text="Download" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

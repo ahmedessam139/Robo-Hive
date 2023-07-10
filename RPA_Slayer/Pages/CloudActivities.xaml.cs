@@ -8,19 +8,18 @@ using System.Windows;
 using System.Windows.Controls;
 using RPA_Slayer;
 using System.Activities.Presentation;
+using System.Linq;
 
 namespace RPA_Slayer.Pages
 {
     public partial class CloudActivities : MahApps.Metro.Controls.MetroWindow
     {
-        private WorkflowDesigner wfDesigner;
 
 
-        public CloudActivities(WorkflowDesigner designer)
+        public CloudActivities()
         {
             InitializeComponent();
             LoadPackagesAsync();
-            wfDesigner = designer;
 
         }
 
@@ -42,7 +41,7 @@ namespace RPA_Slayer.Pages
 
                 }
                 else
-                {
+                {   
                     MessageBox.Show("Failed to load packages. Please try again later.");
                 }
             }
@@ -67,7 +66,7 @@ namespace RPA_Slayer.Pages
                     string filePath = Path.Combine(downloadLocation, fileName);
 
                     // Change button content to "Installing"
-                    button.Content = "Installing";
+                    button.Content = "Installing...";
 
                     // Download the file asynchronously
                     await webClient.DownloadFileTaskAsync(downloadLink, filePath);
@@ -100,7 +99,33 @@ namespace RPA_Slayer.Pages
             }
         }
 
+        private void SearchByName(string searchQuery)
+        {
+            if (DataContext is List<Package> packages)
+            {
+                List<Package> filteredPackages = packages.Where(p => p.Name.Contains(searchQuery)).ToList();
+                DataContext = filteredPackages;
+            }
+        }
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string searchQuery = searchTextBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                // Perform the search based on the searchQuery
+                SearchByName(searchQuery);
+            }
+            else
+            {
+                // No search query, display all packages
+                LoadPackagesAsync();
+            }
+        }
     }
+   
+
+
 
     public class Package
     {
