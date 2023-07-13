@@ -1,5 +1,6 @@
 ﻿using System.Activities;
-using Excel;
+using Microsoft.Office.Interop.Excel;
+using System;
 
 namespace Excel
 {
@@ -20,9 +21,17 @@ namespace Excel
         {
             var wbName = WorkbookName.Get(context);
             var wsName = WorksheetName.Get(context);
-            var range = Cell.Get(context);
+            var cell = Cell.Get(context);
 
-            var value = ExcelBot.Shared.GetRange(wbName, wsName, range).Value?.ToString() ?? string.Empty;
+            Application excelApp = new Application();
+            Workbook workbook = excelApp.Workbooks.Open(wbName);
+            Worksheet worksheet = workbook.Worksheets[wsName];
+
+            Range range = worksheet.Range[cell];
+            string value = range.Value?.ToString();
+
+            workbook.Close(false, Type.Missing, Type.Missing);
+            excelApp.Quit();
 
             Value.Set(context, value);
         }

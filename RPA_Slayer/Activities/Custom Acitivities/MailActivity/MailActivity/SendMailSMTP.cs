@@ -18,8 +18,8 @@ namespace MailActivity
 {
     [DisplayName("Send Mail")]
     [Category("YourCategory")]
-    [SendMailDesigner]
-    public class SendMail : CodeActivity
+    
+    public class SendMailSMTP : CodeActivity
     {
         [RequiredArgument]
         public InArgument<MailAddressCollection> To { get; set; }
@@ -46,7 +46,7 @@ namespace MailActivity
         public string Password { get; set; }
         public string Host { get; set; }
 
-        public SendMail()
+        public SendMailSMTP()
         {
             this.Port = 25;
         }

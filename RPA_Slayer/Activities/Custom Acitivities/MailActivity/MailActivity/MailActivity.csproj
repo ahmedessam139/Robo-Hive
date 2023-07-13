@@ -51,22 +51,9 @@
   <ItemGroup>
     <Compile Include="OpenWindowsMailApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SendMail.cs" />
-    <Compile Include="SendMailDesigner.xaml.cs">
-      <DependentUpon>SendMailDesigner.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Activity1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="SendMailDesigner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="SendMailSMTP.cs" />
+    <Compile Include="SendMailWindows.cs" />
+    <Compile Include="SendMailWithAttachment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
