@@ -28,7 +28,7 @@ namespace RPA_Slayer.Pages
             try
             {
                 // JSON URL endpoint
-                string url = "http://localhost:3000/packages";
+                string url = "http://localhost:3001/packages";
 
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = await client.GetAsync(url);

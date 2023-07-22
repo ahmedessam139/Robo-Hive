@@ -225,6 +225,17 @@ namespace RPA_Slayer
                     activitiesCount += wfToolboxCategory.Tools.Count;
                 }
             }
+            //fixed ForEach
+            toolboxControl.Categories.Add(
+                   new System.Activities.Presentation.Toolbox.ToolboxCategory
+                   {
+                       CategoryName = "CustomForEach",
+                       Tools = {
+                                new ToolboxItemWrapper(typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<>)),
+                                new ToolboxItemWrapper(typeof(System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory<>))
+                       }
+                   }
+            );
 
             return toolboxControl;
         }
@@ -559,7 +570,7 @@ namespace RPA_Slayer
                             }
                         }
                         //Add a sleep so that the debug adornments are visible to the user
-                        System.Threading.Thread.Sleep(250);
+                        System.Threading.Thread.Sleep(100);
                     }));
                 }
             };
