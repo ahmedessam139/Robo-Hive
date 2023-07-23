@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
+using System.ServiceModel.Channels;
 using MailKit;
 using MailKit.Net.Imap;
+using MailKit.Search;
 using MimeKit;
 
 namespace MailActivity
@@ -31,7 +33,8 @@ namespace MailActivity
 
         [Category("Filters")]
         public InArgument<int> MaxEmails { get; set; } = -1; // Default to fetch all emails.
-
+        [Category("Options")]
+        public bool MarkAsRead { get; set; }
         public OutArgument<List<MailMessage>> Mails { get; set; }
 
         protected override void Execute(CodeActivityContext context)
@@ -42,6 +45,7 @@ namespace MailActivity
             int port = Port.Get(context);
             string folder = Folder.Get(context);
             int maxEmails = MaxEmails.Get(context);
+            bool markAsRead = MarkAsRead;
 
             List<MailMessage> mailList = new List<MailMessage>();
 
@@ -62,12 +66,13 @@ namespace MailActivity
 
                     // Select the specified folder.
                     var selectedFolder = client.GetFolder(folder);
-                    selectedFolder.Open(MailKit.FolderAccess.ReadOnly);
+                    selectedFolder.Open(MailKit.FolderAccess.ReadWrite); // Open the folder in read-write mode.
 
-                    Console.WriteLine($"Fetching emails from {folder} folder...");
+                    Console.WriteLine($"Fetching unread emails from {folder} folder...");
 
-                    // Fetch all messages from the selected folder.
-                    var messages = selectedFolder.Fetch(0, -1, MessageSummaryItems.UniqueId | MessageSummaryItems.Envelope | MessageSummaryItems.BodyStructure);
+                    // Fetch only unread messages from the selected folder.
+                    var uids = selectedFolder.Search(SearchQuery.NotSeen);
+                    var messages = selectedFolder.Fetch(uids, MessageSummaryItems.UniqueId | MessageSummaryItems.Envelope | MessageSummaryItems.BodyStructure);
 
                     // Sort the messages by their date, in descending order (newest first).
                     var sortedMessages = messages.OrderByDescending(m => m.Date).Take(maxEmails == -1 ? messages.Count : maxEmails);
@@ -85,9 +90,15 @@ namespace MailActivity
                         };
 
                         mailList.Add(mailMessage);
+
+                        // Mark the message as "read" (Seen) to avoid fetching it again.
+                        if (markAsRead)
+                        {
+                            selectedFolder.AddFlags(message.UniqueId, MessageFlags.Seen, true);
+                        }
                     }
 
-                    Console.WriteLine($"Fetched {mailList.Count} emails.");
+                    Console.WriteLine($"Fetched {mailList.Count} unread emails.");
                 }
                 catch (Exception ex)
                 {

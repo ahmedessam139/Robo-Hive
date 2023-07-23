@@ -323,7 +323,7 @@ namespace RPA_Slayer
                                             {
                                                 // Handle exception
                                             }
-                                        }
+                                        }   
                                     };
 
                                     subItem.Items.Add(subSubItem);
@@ -461,7 +461,7 @@ namespace RPA_Slayer
 
         #endregion
 
-        #region debuging Runner 
+            #region debuging Runner 
 
         public void RunWorkflow()
         {
@@ -567,10 +567,19 @@ namespace RPA_Slayer
                             else
                             {
                                 outputTxtbox.AppendText("Output: " + outputContent + "\n");
+
                             }
                         }
+
+                        if (trackingEventArgs.Activity.DisplayName == "Log" &&
+                         ((ActivityStateRecord)trackingEventArgs.Record).State == ActivityStates.Closed){
+                            //Get OutputText from activity 
+                            
+                                
+                        }
+
                         //Add a sleep so that the debug adornments are visible to the user
-                        System.Threading.Thread.Sleep(100);
+                        System.Threading.Thread.Sleep(100); 
                     }));
                 }
             };

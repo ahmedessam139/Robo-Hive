@@ -54,6 +54,8 @@
     <Compile Include="Click Element.cs" />
     <Compile Include="Close Browser.cs" />
     <Compile Include="Get Element Text.cs" />
+    <Compile Include="Iframe_download.cs" />
+    <Compile Include="Multi_Click.cs" />
     <Compile Include="Open Browser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

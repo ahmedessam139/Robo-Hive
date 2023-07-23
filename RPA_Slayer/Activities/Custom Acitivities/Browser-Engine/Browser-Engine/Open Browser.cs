@@ -37,6 +37,9 @@ namespace Browser_Engine
             // Create a new instance of EdgeDriver with the specified driver path
             this.driver = new EdgeDriver(driverPath);
 
+            // Maximize the browser window
+            driver.Manage().Window.Maximize();
+
             // Navigate to the specified URL
             driver.Navigate().GoToUrl(url);
 
