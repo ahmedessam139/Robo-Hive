@@ -89,6 +89,7 @@
     <Compile Include="SendMailSMTP.cs" />
     <Compile Include="SendMailWindows.cs" />
     <Compile Include="SendMailWithAttachment.cs" />
+    <Compile Include="Wait_Seconds.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

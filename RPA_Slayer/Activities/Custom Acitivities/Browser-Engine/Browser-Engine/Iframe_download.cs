@@ -14,7 +14,7 @@ namespace Browser_Engine
         // Define an activity input argument of type IWebElement (representing the iframe element)
         public InArgument<IWebElement> IframeElement { get; set; }
 
-        // Define an activity input argument of type string (file path to save HTML content)
+        // Define an activity input argument of type string (file path to save HTML content)    
         public InArgument<string> FilePath { get; set; }
 
         protected override void Execute(CodeActivityContext context)

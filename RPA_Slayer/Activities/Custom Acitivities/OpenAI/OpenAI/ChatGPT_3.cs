@@ -4,6 +4,9 @@ using System.Net.Http;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace OpenAI
 {
@@ -17,7 +20,7 @@ namespace OpenAI
         public OutArgument<string> OutputText { get; set; }
 
         // Replace with your GPT-3 API key
-        private const string ApiKey = "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";
+        private const string ApiKey = "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";
 
         // GPT-3 API endpoint
         private const string ApiEndpoint = "https://api.openai.com/v1/chat/completions";
@@ -36,10 +39,13 @@ namespace OpenAI
 }";
 
             // Call the GPT-3 API to get the completion
-            string generatedText = GetGpt3Completion(jsonRequest).Result;
+            string generatedResponse = GetGpt3Completion(jsonRequest).Result;
+
+            // Extract "content" from the response
+            string content = ExtractContentFromResponse(generatedResponse);
 
             // Set the generated text as the output
-            OutputText.Set(context, generatedText);
+            OutputText.Set(context, content);
         }
 
         private async Task<string> GetGpt3Completion(string jsonRequest)
@@ -50,6 +56,23 @@ namespace OpenAI
                 var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
                 var response = await httpClient.PostAsync(ApiEndpoint, content);
                 return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        private string ExtractContentFromResponse(string jsonResponse)
+        {
+            try
+            {
+                // Parse the JSON response and extract the "content" from "message"
+                var responseObj = JObject.Parse(jsonResponse);
+                var content = responseObj["choices"]?.FirstOrDefault()?["message"]?["content"]?.ToString();
+
+                return content;
+            }
+            catch (Exception ex)
+            {
+                // In case of any errors, return an empty string
+                return string.Empty;
             }
         }
     }
