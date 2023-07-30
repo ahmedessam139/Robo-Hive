@@ -1,6 +1,6 @@
 
 
-![Robo-Hive Logo](/RPA_Slayer/images/readme/main_logo.png)
+![Robo-Hive Logo](/readme/main_logo.png)
 <br>
 <br>
 
@@ -17,27 +17,27 @@ Robo-Hive is an ambitious and transformative open-source project, driven by a pa
 
 ## Screenshots
 
-![opened project](/RPA_Slayer/images/readme/1.jpg)
+![opened project](/readme/1.jpg)
 <br>
 <br>
 
-![opened project](/RPA_Slayer/images/readme/2.jpg)
+![opened project](/readme/2.jpg)
 <br>
 <br>
 
-![opened project](/RPA_Slayer/images/readme/3.jpg)
+![opened project](/readme/3.jpg)
 <br>
 <br>
 
-![opened project](/RPA_Slayer/images/readme/4.jpg)
+![opened project](/readme/4.jpg)
 <br>
 <br>
 
-![opened project](/RPA_Slayer/images/readme/5.jpg)
+![opened project](/readme/5.jpg)
 <br>
 <br>
 
-![opened project](/RPA_Slayer/images/readme/6.jpg)
+![opened project](/readme/6.jpg)
 
 ---
 ## built with
