@@ -1,6 +1,10 @@
 
-
+<div align="center">
+  
 ![Robo-Hive Logo](/readme/main_logo.png)
+
+</div>
+
 <br>
 <br>
 
