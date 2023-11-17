@@ -1,7 +1,7 @@
 
 <div align="center">
   
-![Robo-Hive Logo](/readme/main_logo.png)
+![Robo-Hive Logo](/readme/main_logo.svg)
 
 </div>
 
@@ -11,11 +11,20 @@
 
 
 # Robo-Hive
-Robo-Hive is an ambitious and transformative open-source project, driven by a passionate team of students, dedicated to reshaping the landscape of Robotic Process Automation (RPA). Currently under active development, Robo-Hive aims to create a cutting-edge RPA platform that streamlines business processes with unparalleled efficiency. As a student-led initiative, our vision is to democratize automation and make it accessible to all, regardless of technical expertise. Through collaboration and community engagement, we strive to build a powerful and user-friendly tool that revolutionizes automation for businesses of all sizes. We invite fellow enthusiasts and developers to join us on this exciting journey as we work together to shape the future of Robo-Hive and the world of automation.
+ROBO-HIVE is the brainchild of passionate students embarking on their graduation project journey. Crafted with care, this automation tool is a result of dedicated learning and hands-on experience. While it's not a production-ready app, it stands as a testament to our commitment and practice in the field of automation.
 
+This project is a stepping stone, a playground for honing our skills and experimenting with automation concepts. We acknowledge its simplicity, but we believe in its potential as a valuable learning tool.
 
----
+We invite fellow enthusiasts and developers to join us on this exciting journey of exploration and improvement.
 
+<br>
+
+# Orcestrator 
+You can use the Orcestrator to create and manage your projects. It's a simple and intuitive tool that allows you to create and manage your projects. You can also use it to run your projects and view their results.
+
+Orc demo : [Here](https://robo-hive-frontend-landingpage-dashboard.vercel.app/).
+
+Orc Repo : [Here](https://github.com/ahmedessam139/Robo-Hive_Frontend_Landingpage-Dashboard).
 
 
 
